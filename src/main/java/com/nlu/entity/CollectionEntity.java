@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "collection")
@@ -18,6 +19,7 @@ public class CollectionEntity extends BaseEntity{
 	@Column(name = "name")
 	private String name;
 	
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "brand_id")
 	private BrandEntity collectionBrand;

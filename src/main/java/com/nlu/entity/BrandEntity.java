@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "brand")
 public class BrandEntity extends BaseEntity {
@@ -15,6 +17,7 @@ public class BrandEntity extends BaseEntity {
 	@Column(name = "name")
 	private String name;
 
+	@JsonBackReference
 	@OneToMany(mappedBy = "collectionBrand",fetch = FetchType.LAZY)
 	private Set<CollectionEntity> collections;
 
