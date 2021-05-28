@@ -11,18 +11,23 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "stock")
-public class StockEntity extends BaseEntity{
-	
+public class StockEntity extends BaseEntity {
+
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private ProductEntity productStock;
-	
+
 	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "size_id")
 	private SizeEntity stockSize;
-	
+
+	@JsonManagedReference
+	@ManyToOne
+	@JoinColumn(name = "color_id")
+	private ColorEntity stockColor;
+
 	@Column(name = "quantity")
 	private Integer quantity;
 
@@ -49,4 +54,21 @@ public class StockEntity extends BaseEntity{
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
+
+	public SizeEntity getStockSize() {
+		return stockSize;
+	}
+
+	public void setStockSize(SizeEntity stockSize) {
+		this.stockSize = stockSize;
+	}
+
+	public ColorEntity getStockColor() {
+		return stockColor;
+	}
+
+	public void setStockColor(ColorEntity stockColor) {
+		this.stockColor = stockColor;
+	}
+	
 }

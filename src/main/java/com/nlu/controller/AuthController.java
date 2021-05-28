@@ -74,8 +74,6 @@ public class AuthController {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
 		}
 		
-		System.out.print(signUpRequest.toString());
-
 		// Create new user's account
 		UserEntity user = new UserEntity(signUpRequest.getEmail(),
 				encoder.encode(signUpRequest.getPassword()));

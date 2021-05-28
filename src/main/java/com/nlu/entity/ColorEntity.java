@@ -14,23 +14,27 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name = "color")
 public class ColorEntity extends BaseEntity{
 	
-	@JsonBackReference
-	@OneToMany(mappedBy = "color", fetch = FetchType.LAZY)
-	private Set<ProductEntity> products;
+//	@JsonBackReference
+//	@OneToMany(mappedBy = "color", fetch = FetchType.LAZY)
+//	private Set<ProductEntity> products;
 	
 	@Column(name = "name")
 	private String name;
 	
 	@Column(name = "active")
 	private Integer active;
+	
+	@JsonBackReference
+	@OneToMany(mappedBy = "stockColor")
+	private Set<StockEntity> stocks;
 
-	public Set<ProductEntity> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Set<ProductEntity> products) {
-		this.products = products;
-	}
+//	public Set<ProductEntity> getProducts() {
+//		return products;
+//	}
+//
+//	public void setProducts(Set<ProductEntity> products) {
+//		this.products = products;
+//	}
 
 	public String getName() {
 		return name;
@@ -47,4 +51,14 @@ public class ColorEntity extends BaseEntity{
 	public void setActive(Integer active) {
 		this.active = active;
 	}
+
+	public Set<StockEntity> getStocks() {
+		return stocks;
+	}
+
+	public void setStocks(Set<StockEntity> stocks) {
+		this.stocks = stocks;
+	}
+	
+	
 }

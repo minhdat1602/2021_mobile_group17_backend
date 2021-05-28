@@ -17,8 +17,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "user", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "email") })
+@Table(name = "user", uniqueConstraints = { @UniqueConstraint(columnNames = "email") })
 public class UserEntity extends BaseEntity {
 
 	@NotBlank
@@ -29,27 +28,27 @@ public class UserEntity extends BaseEntity {
 	@NotBlank
 	@Size(max = 120)
 	private String password;
-	
+
 	@Column(name = "fname")
 	private String firstName;
-	
+
 	@Column(name = "lname")
 	private String lastName;
-	
+
 	@Column(name = "gender")
 	private String gender;
-	
+
 	@Column(name = "phone")
 	private String phone;
-	
-	@Column(name = "address",columnDefinition = "TEXT")
+
+	@Column(name = "address", columnDefinition = "TEXT")
 	private String address;
-	
+
 	@Column(name = "birthday")
 	private Date birthday;
-	
-	@Column(name = "status")
-	private int status;
+
+	@Column(name = "active")
+	private int active;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -135,12 +134,12 @@ public class UserEntity extends BaseEntity {
 		this.birthday = birthday;
 	}
 
-	public int getStatus() {
-		return status;
+	public int getActive() {
+		return active;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setActive(int active) {
+		this.active = active;
 	}
-	
+
 }
