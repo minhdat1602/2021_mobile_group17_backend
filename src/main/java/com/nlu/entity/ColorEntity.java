@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -13,10 +12,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "color")
 public class ColorEntity extends BaseEntity{
-	
-//	@JsonBackReference
-//	@OneToMany(mappedBy = "color", fetch = FetchType.LAZY)
-//	private Set<ProductEntity> products;
 	
 	@Column(name = "name")
 	private String name;
@@ -27,14 +22,6 @@ public class ColorEntity extends BaseEntity{
 	@JsonBackReference
 	@OneToMany(mappedBy = "stockColor")
 	private Set<StockEntity> stocks;
-
-//	public Set<ProductEntity> getProducts() {
-//		return products;
-//	}
-//
-//	public void setProducts(Set<ProductEntity> products) {
-//		this.products = products;
-//	}
 
 	public String getName() {
 		return name;

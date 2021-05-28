@@ -10,11 +10,11 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "type_customer")
-public class TypeCustomerEntity extends BaseEntity{
+@Table(name = "type")
+public class TypeEntity extends BaseEntity{
 	
 	@JsonBackReference
-	@OneToMany(mappedBy = "typeCustomer")
+	@OneToMany(mappedBy = "type")
 	private Set<ProductEntity> products;
 	
 	@Column(name = "name")

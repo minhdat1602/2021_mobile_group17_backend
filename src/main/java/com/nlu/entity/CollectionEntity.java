@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,11 +19,11 @@ public class CollectionEntity extends BaseEntity{
 	private String name;
 	
 	@ManyToOne
-	@JoinColumn(name = "brand_id", nullable = false)
+	@JoinColumn(name = "brand_id")
 	private BrandEntity collectionBrand;
 	
 	@JsonBackReference
-	@OneToMany(mappedBy = "collection", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "collection")
 	private Set<ProductEntity> products;
 
 	public String getName() {

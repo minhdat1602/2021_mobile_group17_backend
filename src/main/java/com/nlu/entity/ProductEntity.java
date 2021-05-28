@@ -35,7 +35,6 @@ public class ProductEntity extends BaseEntity {
 
 	@Column(name = "avtive")
 	private int active;
-
 	
 	@JsonManagedReference
 	@ManyToOne
@@ -44,18 +43,8 @@ public class ProductEntity extends BaseEntity {
 	
 	@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "size_id")
-	private SizeEntity size;
-	
-	@JsonManagedReference
-	@ManyToOne
-	@JoinColumn(name = "color_id")
-	private ColorEntity color;
-	
-	@JsonManagedReference
-	@ManyToOne
-	@JoinColumn(name = "type_customer_id")
-	private TypeCustomerEntity typeCustomer;
+	@JoinColumn(name = "type_id")
+	private TypeEntity type;
 	
 	@JsonManagedReference
 	@ManyToOne
@@ -132,30 +121,6 @@ public class ProductEntity extends BaseEntity {
 
 	public void setCategory(CategoryEntity category) {
 		this.category = category;
-	}
-
-	public SizeEntity getSize() {
-		return size;
-	}
-
-	public void setSize(SizeEntity size) {
-		this.size = size;
-	}
-
-	public ColorEntity getColor() {
-		return color;
-	}
-
-	public void setColor(ColorEntity color) {
-		this.color = color;
-	}
-
-	public TypeCustomerEntity getTypeCustomer() {
-		return typeCustomer;
-	}
-
-	public void setTypeCustomer(TypeCustomerEntity typeCustomer) {
-		this.typeCustomer = typeCustomer;
 	}
 
 	public CollectionEntity getCollection() {

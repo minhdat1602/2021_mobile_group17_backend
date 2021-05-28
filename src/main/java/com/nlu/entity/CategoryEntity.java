@@ -16,7 +16,7 @@ public class CategoryEntity extends BaseEntity {
 	@JsonBackReference
 	@OneToMany(mappedBy = "category")
 	private Set<ProductEntity> products;
-
+	
 	@Column(name = "name")
 	private String name;
 

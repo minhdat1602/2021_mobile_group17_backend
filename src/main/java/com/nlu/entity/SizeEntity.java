@@ -19,10 +19,6 @@ public class SizeEntity extends BaseEntity{
 	@Column(name = "active", length = 2)
 	private Integer active;
 	
-//	@JsonBackReference
-//	@OneToMany(mappedBy = "size")
-//	private Set<ProductEntity> products;
-	
 	@JsonBackReference
 	@OneToMany(mappedBy = "stockSize")
 	private Set<StockEntity> stocks;
@@ -43,11 +39,4 @@ public class SizeEntity extends BaseEntity{
 		this.active = active;
 	}
 
-//	public Set<ProductEntity> getProducts() {
-//		return products;
-//	}
-//
-//	public void setProducts(Set<ProductEntity> products) {
-//		this.products = products;
-//	}
 }

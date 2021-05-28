@@ -15,8 +15,8 @@ public class BrandEntity extends BaseEntity {
 	@Column(name = "name")
 	private String name;
 
-//	@OneToMany(mappedBy = "collectionBrand",fetch = FetchType.LAZY)
-//	private Set<CollectionEntity> collections;
+	@OneToMany(mappedBy = "collectionBrand",fetch = FetchType.LAZY)
+	private Set<CollectionEntity> collections;
 
 	public String getName() {
 		return name;
@@ -26,12 +26,12 @@ public class BrandEntity extends BaseEntity {
 		this.name = name;
 	}
 
-//	public Set<CollectionEntity> getCollections() {
-//		return collections;
-//	}
-//
-//	public void setCollections(Set<CollectionEntity> collections) {
-//		this.collections = collections;
-//	}
+	public Set<CollectionEntity> getCollections() {
+		return collections;
+	}
+
+	public void setCollections(Set<CollectionEntity> collections) {
+		this.collections = collections;
+	}
 	
 }
