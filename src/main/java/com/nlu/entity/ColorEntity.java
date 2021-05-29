@@ -20,7 +20,7 @@ public class ColorEntity extends BaseEntity{
 	private Integer active;
 	
 	@JsonBackReference
-	@OneToMany(mappedBy = "stockColor")
+	@OneToMany(mappedBy = "color")
 	private Set<StockEntity> stocks;
 
 	public String getName() {

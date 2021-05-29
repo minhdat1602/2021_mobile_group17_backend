@@ -22,7 +22,7 @@ public class CollectionEntity extends BaseEntity{
 	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "brand_id")
-	private BrandEntity collectionBrand;
+	private BrandEntity brand;
 	
 	@JsonBackReference
 	@OneToMany(mappedBy = "collection")
@@ -36,12 +36,14 @@ public class CollectionEntity extends BaseEntity{
 		this.name = name;
 	}
 
-	public BrandEntity getCollectionBrand() {
-		return collectionBrand;
+	
+
+	public BrandEntity getBrand() {
+		return brand;
 	}
 
-	public void setCollectionBrand(BrandEntity collectionBrand) {
-		this.collectionBrand = collectionBrand;
+	public void setBrand(BrandEntity brand) {
+		this.brand = brand;
 	}
 
 	public Set<ProductEntity> getProducts() {

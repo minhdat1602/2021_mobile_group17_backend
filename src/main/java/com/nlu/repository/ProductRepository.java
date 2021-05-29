@@ -10,4 +10,13 @@ import com.nlu.entity.ProductEntity;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 	List<ProductEntity> findAll();
+
+	ProductEntity findById(long id);
+
+	List<ProductEntity> findByCategoryId(long categoryId);
+	List<ProductEntity> findByTypeId(long typeId);
+	List<ProductEntity> findByCollectionId(long collectionId);
+	List<ProductEntity> findByCollectionBrandId(long brandId);
+	List<ProductEntity> findByCategoryIdAndTypeId(long categoryId, long typeId);
+	
 }

@@ -18,7 +18,7 @@ public class BrandEntity extends BaseEntity {
 	private String name;
 
 	@JsonBackReference
-	@OneToMany(mappedBy = "collectionBrand",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "brand",fetch = FetchType.LAZY)
 	private Set<CollectionEntity> collections;
 
 	public String getName() {

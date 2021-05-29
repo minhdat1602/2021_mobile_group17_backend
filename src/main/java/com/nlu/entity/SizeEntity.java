@@ -20,7 +20,7 @@ public class SizeEntity extends BaseEntity{
 	private Integer active;
 	
 	@JsonBackReference
-	@OneToMany(mappedBy = "stockSize")
+	@OneToMany(mappedBy = "size")
 	private Set<StockEntity> stocks;
 
 	public String getSize() {

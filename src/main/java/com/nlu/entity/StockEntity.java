@@ -21,12 +21,12 @@ public class StockEntity extends BaseEntity {
 	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "size_id")
-	private SizeEntity stockSize;
+	private SizeEntity size;
 
 	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "color_id")
-	private ColorEntity stockColor;
+	private ColorEntity color;
 
 	@Column(name = "quantity")
 	private Integer quantity;
@@ -39,12 +39,22 @@ public class StockEntity extends BaseEntity {
 		this.productStock = productStock;
 	}
 
-	public SizeEntity getProductSize() {
-		return stockSize;
+
+
+	public SizeEntity getSize() {
+		return size;
 	}
 
-	public void setProductSize(SizeEntity stockSize) {
-		this.stockSize = stockSize;
+	public void setSize(SizeEntity size) {
+		this.size = size;
+	}
+
+	public ColorEntity getColor() {
+		return color;
+	}
+
+	public void setColor(ColorEntity color) {
+		this.color = color;
 	}
 
 	public Integer getQuantity() {
@@ -55,20 +65,6 @@ public class StockEntity extends BaseEntity {
 		this.quantity = quantity;
 	}
 
-	public SizeEntity getStockSize() {
-		return stockSize;
-	}
-
-	public void setStockSize(SizeEntity stockSize) {
-		this.stockSize = stockSize;
-	}
-
-	public ColorEntity getStockColor() {
-		return stockColor;
-	}
-
-	public void setStockColor(ColorEntity stockColor) {
-		this.stockColor = stockColor;
-	}
+	
 	
 }

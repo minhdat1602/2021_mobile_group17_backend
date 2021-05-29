@@ -8,21 +8,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nlu.entity.ProductEntity;
-import com.nlu.service.ProductService;
+import com.nlu.entity.SizeEntity;
+import com.nlu.service.SizeService;
 
 @RestController
-@RequestMapping("/api/product")
-public class ShopController {
-	
+@RequestMapping("/api/size")
+public class SizeController {
+
 	@Autowired
-	private ProductService productService;
-	
+	private SizeService sizeService;
+
 	@GetMapping("/all")
-	public ResponseEntity<List<ProductEntity>> getAll(){
-		List<ProductEntity> products = productService.findAll();
-		System.out.print("product num: " + products.size());
-		return ResponseEntity.ok(products);
+	public ResponseEntity<?> getAll() {
+		List<SizeEntity> sizes = sizeService.getAll();
+		return ResponseEntity.ok(sizes);
 	}
-	
 }
