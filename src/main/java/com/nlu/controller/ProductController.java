@@ -23,6 +23,7 @@ public class ProductController {
 	public ResponseEntity<List<ProductEntity>> getAll() {
 		List<ProductEntity> products = productService.findAll();
 		System.out.print("product num: " + products.size());
+		
 		return ResponseEntity.ok(products);
 	}
 
