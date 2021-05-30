@@ -1,5 +1,6 @@
 package com.nlu.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,4 +12,6 @@ import com.nlu.entity.RoleEntity;
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	Optional<RoleEntity> findByCode(ERole code);
+
+	List<RoleEntity> findAll();
 }

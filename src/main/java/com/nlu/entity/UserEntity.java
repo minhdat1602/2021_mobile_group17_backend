@@ -29,10 +29,10 @@ public class UserEntity extends BaseEntity {
 	@Size(max = 120)
 	private String password;
 
-	@Column(name = "fname")
+	@Column(name = "f_name")
 	private String firstName;
 
-	@Column(name = "lname")
+	@Column(name = "l_name")
 	private String lastName;
 
 	@Column(name = "gender")

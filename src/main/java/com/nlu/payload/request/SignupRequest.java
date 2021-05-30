@@ -1,5 +1,6 @@
 package com.nlu.payload.request;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.validation.constraints.Email;
@@ -15,14 +16,50 @@ public class SignupRequest {
 	
 	private Set<String> role;
 	
-	private String fname;
-	private String lname;
+	private String firstName;
+	private String lastName;
+	private String gender;
+	private Date birthday;
 	private String phone;
 	private String address;
 
 	@NotBlank
 	@Size(min = 6, max = 40)
 	private String password;
+	
+	
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 
 	public String getEmail() {
 		return email;
@@ -48,22 +85,6 @@ public class SignupRequest {
 		this.role = role;
 	}
 
-	public String getFname() {
-		return fname;
-	}
-
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
-
-	public String getLname() {
-		return lname;
-	}
-
-	public void setLname(String lname) {
-		this.lname = lname;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
@@ -82,8 +103,9 @@ public class SignupRequest {
 
 	@Override
 	public String toString() {
-		return "SignupRequest [email=" + email + ", role=" + role + ", fname=" + fname + ", lname=" + lname + ", phone="
-				+ phone + ", address=" + address + ", password=" + password + "]";
+		return "SignupRequest [email=" + email + ", role=" + role + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", gender=" + gender + ", birthday=" + birthday + ", phone=" + phone + ", address="
+				+ address + ", password=" + password + "]";
 	}
-	
+
 }

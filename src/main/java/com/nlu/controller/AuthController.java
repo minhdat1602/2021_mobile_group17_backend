@@ -64,8 +64,7 @@ public class AuthController {
 		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 
-		return ResponseEntity.ok(
-				new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), roles));
+		return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), roles));
 	}
 
 	@PostMapping("/signup")
@@ -73,15 +72,14 @@ public class AuthController {
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
 		}
-		
+
 		// Create new user's account
-		UserEntity user = new UserEntity(signUpRequest.getEmail(),
-				encoder.encode(signUpRequest.getPassword()));
-		user.setFirstName(signUpRequest.getFname());
-		user.setLastName(signUpRequest.getLname());
+		UserEntity user = new UserEntity(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
+		user.setFirstName(signUpRequest.getFirstName());
+		user.setLastName(signUpRequest.getLastName());
 		user.setPhone(signUpRequest.getPhone());
 		user.setAddress(signUpRequest.getAddress());
-		
+
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<RoleEntity> roles = new HashSet<>();
 
