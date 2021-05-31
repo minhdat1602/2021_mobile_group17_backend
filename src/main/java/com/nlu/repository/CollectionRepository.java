@@ -8,6 +8,14 @@ import org.springframework.stereotype.Repository;
 import com.nlu.entity.CollectionEntity;
 
 @Repository
-public interface CollectionRepository extends JpaRepository<CollectionEntity, Long>{
+public interface CollectionRepository extends JpaRepository<CollectionEntity, Long> {
 	List<CollectionEntity> findByBrand(long brandId);
+
+	List<CollectionEntity> findAll();
+
+	CollectionEntity findById(long id);
+
+	<S extends CollectionEntity> S save(S entity);
+
+	void delete(CollectionEntity collectionEntity);
 }

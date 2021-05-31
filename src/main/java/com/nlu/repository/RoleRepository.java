@@ -14,4 +14,10 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 	Optional<RoleEntity> findByCode(ERole code);
 
 	List<RoleEntity> findAll();
+	
+	RoleEntity findById(long id);
+
+	<S extends RoleEntity> S save(S entity);
+
+	void delete(RoleEntity roleEntity);
 }

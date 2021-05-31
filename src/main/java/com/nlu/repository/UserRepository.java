@@ -11,9 +11,14 @@ import com.nlu.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	Optional<UserEntity> findByEmail(String email);
-	
+
 	Boolean existsByEmail(String email);
-	
+
 	List<UserEntity> findAll();
+
 	UserEntity findById(long id);
+
+	void delete(UserEntity userEntity);
+
+	<S extends UserEntity> S save(S entity);
 }

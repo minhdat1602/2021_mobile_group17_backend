@@ -7,8 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import com.nlu.entity.CategoryEntity;
 
-
 @Repository
-public interface CategoryRepository extends JpaRepository<CategoryEntity, Long>{
+public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
 	List<CategoryEntity> findAll();
+
+	CategoryEntity findById(long id);
+
+	<S extends CategoryEntity> S save(S entity);
+
+	void delete(CategoryEntity scategoryEntity);
 }

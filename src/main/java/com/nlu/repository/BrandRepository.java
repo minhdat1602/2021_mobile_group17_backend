@@ -8,6 +8,12 @@ import org.springframework.stereotype.Repository;
 import com.nlu.entity.BrandEntity;
 
 @Repository
-public interface BrandRepository extends JpaRepository<BrandEntity, Long>{
+public interface BrandRepository extends JpaRepository<BrandEntity, Long> {
 	List<BrandEntity> findAll();
+
+	BrandEntity findById(long id);
+
+	<S extends BrandEntity> S save(BrandEntity entity);
+
+	void delete(BrandEntity brandEntity);
 }
