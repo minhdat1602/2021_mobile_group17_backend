@@ -2,25 +2,19 @@ package com.nlu.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
 @Table(name = "image")
-@Getter
-@Setter
 public class ImageEntity extends BaseEntity {
 
 	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "product_id")
+	@ManyToOne
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private ProductEntity product;
 
 	@Column(name = "url")
@@ -28,5 +22,29 @@ public class ImageEntity extends BaseEntity {
 
 	@Column(name = "display")
 	private int display;
+
+	public ProductEntity getProduct() {
+		return product;
+	}
+
+	public void setProduct(ProductEntity product) {
+		this.product = product;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public int getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(int display) {
+		this.display = display;
+	}
 
 }

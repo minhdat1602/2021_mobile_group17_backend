@@ -1,6 +1,6 @@
 package com.nlu.entity;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,16 +9,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
 @Table(name = "brand")
-@Getter
-@Setter
 public class BrandEntity extends BaseEntity {
 
-	@Column(name = "brand_name")
+	@Column(name = "name")
 	private String name;
 
 	@Column(name = "active")
@@ -26,5 +21,30 @@ public class BrandEntity extends BaseEntity {
 
 	@JsonBackReference
 	@OneToMany(mappedBy = "brand")
-	private Set<CollectionEntity> collections;
+	private List<CollectionEntity> collections;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
+	public List<CollectionEntity> getCollections() {
+		return collections;
+	}
+
+	public void setCollections(List<CollectionEntity> collections) {
+		this.collections = collections;
+	}
+
 }

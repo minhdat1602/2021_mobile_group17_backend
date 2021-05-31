@@ -26,7 +26,7 @@ public class RoleEntity extends BaseEntity {
 	public RoleEntity() {
 	}
 
-	@ManyToMany(mappedBy = "roles")
+	@ManyToMany(mappedBy = "roles", targetEntity = UserEntity.class)
 	private Set<UserEntity> users = new HashSet<>();
 
 	public RoleEntity(ERole code) {

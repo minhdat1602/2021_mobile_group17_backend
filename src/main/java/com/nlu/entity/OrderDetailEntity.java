@@ -6,13 +6,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "order_detail")
-@Getter
-@Setter
 public class OrderDetailEntity extends BaseEntity {
 
 	@ManyToOne
@@ -28,12 +25,49 @@ public class OrderDetailEntity extends BaseEntity {
 	@Column(name = "quantity")
 	private double quantity;
 
+	@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "inventory_id")
+	@JoinColumn(name = "inventory_id", referencedColumnName = "id")
 	private InventoryEntity inventory;
 
 	public OrderEntity getOrder() {
 		return order;
+	}
+
+	public void setOrder(OrderEntity order) {
+		this.order = order;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
+
+	public double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(double quantity) {
+		this.quantity = quantity;
+	}
+
+	public InventoryEntity getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(InventoryEntity inventory) {
+		this.inventory = inventory;
 	}
 
 }

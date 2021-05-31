@@ -7,15 +7,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "order")
-@Getter
-@Setter
 public class OrderEntity extends BaseEntity {
-	
+
 	@Column(name = "code")
 	private String code;
 
@@ -28,23 +25,27 @@ public class OrderEntity extends BaseEntity {
 	@Column(name = "total_money")
 	private double total_money;
 
+	@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "status_id")
+	@JoinColumn(name = "status_id", referencedColumnName = "id")
 	private StatusEntity status;
 
+	@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "coupon_id")
+	@JoinColumn(name = "coupon_id", referencedColumnName = "id")
 	private CouponEntity coupon;
 
 	@Column(name = "note")
 	private String note;
-	
+
+	@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private UserEntity user;
-	
+
+	@JsonManagedReference
 	@OneToOne
-	@JoinColumn(name = "customer_id")
+	@JoinColumn(name = "customer_id", referencedColumnName = "id")
 	private CustomerEntity customer;
 
 }

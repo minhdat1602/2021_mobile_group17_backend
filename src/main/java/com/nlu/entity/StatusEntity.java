@@ -9,13 +9,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
 @Table(name = "status")
-@Getter
-@Setter
 public class StatusEntity extends BaseEntity {
 
 	@Column(name = "code")
@@ -28,7 +23,39 @@ public class StatusEntity extends BaseEntity {
 	private int active;
 
 	@JsonBackReference
-	@OneToMany(mappedBy = "status")
+	@OneToMany(mappedBy = "status", targetEntity = OrderEntity.class)
 	private List<OrderEntity> orders;
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
+	public List<OrderEntity> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<OrderEntity> orders) {
+		this.orders = orders;
+	}
 
 }

@@ -10,13 +10,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
 @Table(name = "cart")
-@Getter
-@Setter
 public class CartEntity extends BaseEntity {
 
 	@JsonManagedReference
@@ -25,7 +20,23 @@ public class CartEntity extends BaseEntity {
 	private UserEntity user;
 
 	@JsonManagedReference
-	@OneToMany(mappedBy = "cart")
+	@OneToMany(mappedBy = "cart", targetEntity = CartItemEntity.class)
 	private List<CartItemEntity> cartItems;
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
+	public List<CartItemEntity> getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(List<CartItemEntity> cartItems) {
+		this.cartItems = cartItems;
+	}
 
 }

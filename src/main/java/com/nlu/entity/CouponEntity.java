@@ -7,17 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.criteria.Order;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
 @Table(name = "coupon")
-@Getter
-@Setter
 public class CouponEntity extends BaseEntity {
 
 	@Column(name = "code")
@@ -32,16 +26,70 @@ public class CouponEntity extends BaseEntity {
 	@Column(name = "max_times")
 	private int max_times;
 
-	@Column(name = "begin")
+	@Column(name = "date_begin")
 	private Date begin;
 
-	@Column(name = "end")
+	@Column(name = "date_end")
 	private Date end;
 
 	@JsonBackReference
-	@OneToMany(mappedBy = "coupon")
-	private List<Order> orders;
+	@OneToMany(mappedBy = "coupon", targetEntity = OrderEntity.class)
+	private List<OrderEntity> orders;
 
+	public String getCode() {
+		return code;
+	}
 
-	
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
+
+	public double getMax_discount() {
+		return max_discount;
+	}
+
+	public void setMax_discount(double max_discount) {
+		this.max_discount = max_discount;
+	}
+
+	public int getMax_times() {
+		return max_times;
+	}
+
+	public void setMax_times(int max_times) {
+		this.max_times = max_times;
+	}
+
+	public Date getBegin() {
+		return begin;
+	}
+
+	public void setBegin(Date begin) {
+		this.begin = begin;
+	}
+
+	public Date getEnd() {
+		return end;
+	}
+
+	public void setEnd(Date end) {
+		this.end = end;
+	}
+
+	public List<OrderEntity> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<OrderEntity> orders) {
+		this.orders = orders;
+	}
+
 }

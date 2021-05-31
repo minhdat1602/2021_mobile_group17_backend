@@ -9,27 +9,45 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
 @Table(name = "cart_item")
-@Getter
-@Setter
 public class CartItemEntity extends BaseEntity {
 
 	@JsonBackReference
 	@ManyToOne
-	@JoinColumn(name = "cart_id")
+	@JoinColumn(name = "cart_id", referencedColumnName = "id")
 	private CartEntity cart;
 
 	@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "inventory_id")
+	@JoinColumn(name = "inventory_id", referencedColumnName = "id")
 	private InventoryEntity inventory;
 
 	@Column(name = "quantity")
 	private Integer quantity;
 
+	public CartEntity getCart() {
+		return cart;
+	}
+
+	public void setCart(CartEntity cart) {
+		this.cart = cart;
+	}
+
+	public InventoryEntity getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(InventoryEntity inventory) {
+		this.inventory = inventory;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 
 }
