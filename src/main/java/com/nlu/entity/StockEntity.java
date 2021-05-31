@@ -23,10 +23,10 @@ public class StockEntity extends BaseEntity {
 	@JoinColumn(name = "size_id")
 	private SizeEntity size;
 
-	@JsonManagedReference
-	@ManyToOne
-	@JoinColumn(name = "color_id")
-	private ColorEntity color;
+//	@JsonManagedReference
+//	@ManyToOne
+//	@JoinColumn(name = "color_id")
+//	private ColorEntity color;
 
 	@Column(name = "quantity")
 	private Integer quantity;
@@ -49,13 +49,13 @@ public class StockEntity extends BaseEntity {
 		this.size = size;
 	}
 
-	public ColorEntity getColor() {
-		return color;
-	}
-
-	public void setColor(ColorEntity color) {
-		this.color = color;
-	}
+//	public ColorEntity getColor() {
+//		return color;
+//	}
+//
+//	public void setColor(ColorEntity color) {
+//		this.color = color;
+//	}
 
 	public Integer getQuantity() {
 		return quantity;

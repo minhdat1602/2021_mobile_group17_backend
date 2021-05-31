@@ -29,6 +29,12 @@ public class ProductEntity extends BaseEntity {
 
 	@Column(name = "new")
 	private Integer isNew;
+	
+	@Column(name = "material")
+	private String material;
+	
+	@Column(name = "colour")
+	private String colour;
 
 	@Column(name = "description")
 	private String description;

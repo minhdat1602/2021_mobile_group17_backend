@@ -19,9 +19,9 @@ public class ColorEntity extends BaseEntity{
 	@Column(name = "active")
 	private Integer active;
 	
-	@JsonBackReference
-	@OneToMany(mappedBy = "color")
-	private Set<StockEntity> stocks;
+//	@JsonBackReference
+//	@OneToMany(mappedBy = "color")
+//	private Set<StockEntity> stocks;
 
 	public String getName() {
 		return name;
@@ -39,13 +39,13 @@ public class ColorEntity extends BaseEntity{
 		this.active = active;
 	}
 
-	public Set<StockEntity> getStocks() {
-		return stocks;
-	}
-
-	public void setStocks(Set<StockEntity> stocks) {
-		this.stocks = stocks;
-	}
+//	public Set<StockEntity> getStocks() {
+//		return stocks;
+//	}
+//
+//	public void setStocks(Set<StockEntity> stocks) {
+//		this.stocks = stocks;
+//	}
 	
 	
 }
