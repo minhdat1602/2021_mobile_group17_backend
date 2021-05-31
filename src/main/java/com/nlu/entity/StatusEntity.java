@@ -1,6 +1,6 @@
 package com.nlu.entity;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,14 +13,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "category")
+@Table(name = "status")
 @Getter
 @Setter
-public class CategoryEntity extends BaseEntity {
-
-	@JsonBackReference
-	@OneToMany(mappedBy = "category")
-	private Set<ProductEntity> products;
+public class StatusEntity extends BaseEntity {
 
 	@Column(name = "code")
 	private String code;
@@ -29,6 +25,10 @@ public class CategoryEntity extends BaseEntity {
 	private String name;
 
 	@Column(name = "active")
-	private Integer active;
+	private int active;
+
+	@JsonBackReference
+	@OneToMany(mappedBy = "status")
+	private List<OrderEntity> orders;
 
 }

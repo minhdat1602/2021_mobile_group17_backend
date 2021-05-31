@@ -9,8 +9,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "type")
+@Getter
+@Setter
 public class TypeEntity extends BaseEntity{
 	
 	@JsonBackReference
@@ -23,27 +28,5 @@ public class TypeEntity extends BaseEntity{
 	@Column(name = "active")
 	private Integer active;
 
-	public Set<ProductEntity> getProducts() {
-		return products;
-	}
 
-	public void setProducts(Set<ProductEntity> products) {
-		this.products = products;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getActive() {
-		return active;
-	}
-
-	public void setActive(Integer active) {
-		this.active = active;
-	}
 }

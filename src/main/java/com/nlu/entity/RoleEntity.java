@@ -24,7 +24,6 @@ public class RoleEntity extends BaseEntity {
 	private String name;
 
 	public RoleEntity() {
-
 	}
 
 	@ManyToMany(mappedBy = "roles")

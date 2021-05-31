@@ -9,8 +9,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name ="size")
+@Getter
+@Setter
 public class SizeEntity extends BaseEntity{
 	
 	@Column(name = "size")
@@ -21,22 +26,6 @@ public class SizeEntity extends BaseEntity{
 	
 	@JsonBackReference
 	@OneToMany(mappedBy = "size")
-	private Set<StockEntity> stocks;
-
-	public String getSize() {
-		return size;
-	}
-
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-	public Integer getActive() {
-		return active;
-	}
-
-	public void setActive(Integer active) {
-		this.active = active;
-	}
+	private Set<InventoryEntity> stocks;
 
 }

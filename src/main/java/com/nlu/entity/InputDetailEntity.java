@@ -2,31 +2,37 @@ package com.nlu.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "image")
+@Table(name = "input_detail")
 @Getter
 @Setter
-public class ImageEntity extends BaseEntity {
+public class InputDetailEntity extends BaseEntity {
 
 	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
+	@JoinColumn(name = "input_id")
+	private InputEntity input;
+
+	@Column(name = "quantity")
+	private int quantity;
+	
+	@JsonManagedReference
+	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private ProductEntity product;
 
-	@Column(name = "url")
-	private String url;
+	@Column(name = "price")
+	private double price;
 
-	@Column(name = "display")
-	private int display;
-
+	
 }
