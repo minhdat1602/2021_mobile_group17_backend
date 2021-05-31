@@ -10,13 +10,13 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "status")
+@Table(name = "order_status")
 public class StatusEntity extends BaseEntity {
 
-	@Column(name = "code")
+	@Column(name = "status_code")
 	private String code;
 
-	@Column(name = "name")
+	@Column(name = "status_name")
 	private String name;
 
 	@Column(name = "active")

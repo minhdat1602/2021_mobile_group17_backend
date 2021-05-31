@@ -62,6 +62,10 @@ public class UserEntity extends BaseEntity {
 	private List<ReviewEntity> reviews;
 
 	@JsonBackReference
+	@OneToMany(mappedBy = "user", targetEntity = OrderEntity.class)
+	private List<OrderEntity> orders;
+
+	@JsonBackReference
 	@OneToOne(mappedBy = "user", targetEntity = CartEntity.class)
 	private CartEntity cart;
 
@@ -75,6 +79,16 @@ public class UserEntity extends BaseEntity {
 	public UserEntity(String email, String password) {
 		this.email = email;
 		this.password = password;
+	}
+	
+	
+
+	public List<OrderEntity> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<OrderEntity> orders) {
+		this.orders = orders;
 	}
 
 	public String getEmail() {
