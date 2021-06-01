@@ -16,4 +16,9 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> 
 	<S extends CategoryEntity> S save(S entity);
 
 	void delete(CategoryEntity scategoryEntity);
+
+	void deleteById(Long id);
+
+
+	boolean existsById(Long id);
 }

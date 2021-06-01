@@ -18,4 +18,31 @@ public class BrandService {
 		List<BrandEntity> brands = brandRepository.findAll();
 		return brands;
 	}
+
+	public BrandEntity getById(long id) {
+		BrandEntity brand = brandRepository.findById(id);
+		return brand;
+	}
+
+	public BrandEntity create(BrandEntity brandEntity) {
+		BrandEntity brand = brandRepository.save(brandEntity);
+		return brand;
+	}
+
+	public BrandEntity update(BrandEntity brandEntity) {
+		if (brandRepository.existsById(brandEntity.getId())) {
+			return brandRepository.save(brandEntity);
+		} else
+			return null;
+	}
+
+	public void delete(long id) {
+		brandRepository.deleteById(id);
+	}
+
+	public void deleteAll(Long[] ids) {
+		for (Long id : ids)
+			brandRepository.deleteById(id);
+	}
+
 }

@@ -21,7 +21,7 @@ public class ProductController {
 
 	@GetMapping("/all")
 	public ResponseEntity<List<ProductEntity>> getAll() {
-		List<ProductEntity> products = productService.findAll();
+		List<ProductEntity> products = productService.getAll();
 		System.out.print("product num: " + products.size());
 		
 		return ResponseEntity.ok(products);
@@ -29,7 +29,7 @@ public class ProductController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<ProductEntity> getProductById(@PathVariable("id") long id) {
-		ProductEntity product = productService.findOneById(id);
+		ProductEntity product = productService.getById(id);
 		System.out.print(product.toString());
 		return ResponseEntity.ok(product);
 	}

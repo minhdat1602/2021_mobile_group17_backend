@@ -18,4 +18,28 @@ public class TypeService {
 		List<TypeEntity> types = typeRepository.findAll();
 		return types;
 	}
+
+	public TypeEntity getById(long id) {
+		TypeEntity type = typeRepository.findById(id);
+		return type;
+	}
+
+	public TypeEntity insert(TypeEntity typeEntity) {
+		TypeEntity type = typeRepository.save(typeEntity);
+		return type;
+	}
+
+	public TypeEntity update(TypeEntity typeEntity) {
+		TypeEntity type = typeRepository.save(typeEntity);
+		return type;
+	}
+
+	public void delete(long id) {
+		typeRepository.deleteById(id);
+	}
+
+	public void deleteAll(long[] ids) {
+		for (long id : ids)
+			typeRepository.deleteById(id);
+	}
 }

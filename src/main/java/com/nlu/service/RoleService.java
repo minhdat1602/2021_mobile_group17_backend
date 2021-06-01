@@ -12,9 +12,33 @@ import com.nlu.repository.RoleRepository;
 public class RoleService {
 	@Autowired
 	private RoleRepository roleRepository;
-	
-	public List<RoleEntity> getAll(){
+
+	public List<RoleEntity> getAll() {
 		List<RoleEntity> roles = roleRepository.findAll();
 		return roles;
+	}
+
+	public RoleEntity getById(long id) {
+		RoleEntity role = roleRepository.findById(id);
+		return role;
+	}
+
+	public RoleEntity insert(RoleEntity roleEntity) {
+		RoleEntity role = roleRepository.save(roleEntity);
+		return role;
+	}
+
+	public RoleEntity update(RoleEntity roleEntity) {
+		RoleEntity role = roleRepository.save(roleEntity);
+		return role;
+	}
+
+	public void delete(long id) {
+		roleRepository.deleteById(id);
+	}
+
+	public void deleteAll(long[] ids) {
+		for (long id : ids)
+			roleRepository.deleteById(id);
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.nlu.entity.InventoryEntity;
 
 @Repository
-public interface InventoryRepository extends JpaRepository<InventoryEntity, Long>{
+public interface InventoryRepository extends JpaRepository<InventoryEntity, Long> {
 	List<InventoryEntity> findAll();
 
 	InventoryEntity findById(long id);
@@ -16,4 +16,9 @@ public interface InventoryRepository extends JpaRepository<InventoryEntity, Long
 	<S extends InventoryEntity> S save(S entity);
 
 	void delete(InventoryEntity inventoryEntity);
+
+	void deleteById(Long id);
+
+
+	boolean existsById(Long id);
 }

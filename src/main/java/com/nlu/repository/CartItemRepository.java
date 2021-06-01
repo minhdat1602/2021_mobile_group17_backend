@@ -11,5 +11,8 @@ public interface CartItemRepository extends JpaRepository<CartItemEntity, Long> 
 
 	<S extends CartItemEntity> S save(S entity);
 
-	void delete(CartItemEntity cartItemEntity);
+	void deleteById(Long id);
+
+
+	boolean existsById(Long id);
 }

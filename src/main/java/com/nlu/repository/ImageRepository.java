@@ -16,4 +16,9 @@ public interface ImageRepository extends JpaRepository<ImageEntity, Long> {
 	<S extends ImageEntity> S save(S entity);
 
 	void delete(ImageEntity imageEntity);
+
+	void deleteById(Long id);
+
+
+	boolean existsById(Long id);
 }

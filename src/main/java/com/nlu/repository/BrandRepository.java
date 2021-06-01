@@ -15,5 +15,9 @@ public interface BrandRepository extends JpaRepository<BrandEntity, Long> {
 
 	<S extends BrandEntity> S save(BrandEntity entity);
 
-	void delete(BrandEntity brandEntity);
+	void deleteById(Long id);
+	
+	
+	boolean existsById(Long id);
+	
 }

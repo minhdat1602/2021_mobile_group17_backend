@@ -16,4 +16,9 @@ public interface SupplierRepository extends JpaRepository<SupplierEntity, Long> 
 	<S extends SupplierEntity> S save(S entity);
 
 	void delete(SupplierEntity supplierEntity);
+
+	void deleteById(Long id);
+
+
+	boolean existsById(Long id);
 }

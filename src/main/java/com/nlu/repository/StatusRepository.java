@@ -16,4 +16,8 @@ public interface StatusRepository extends JpaRepository<StatusEntity, Long> {
 	<S extends StatusEntity> S save(S entity);
 
 	void delete(StatusEntity statusEntity);
+
+	void deleteById(Long id);
+
+	boolean existsById(Long id);
 }

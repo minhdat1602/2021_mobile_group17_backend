@@ -16,4 +16,9 @@ public interface InputDetailRepository extends JpaRepository<InputDetailEntity, 
 	<S extends InputDetailEntity> S save(S entity);
 
 	void delete(InputDetailEntity inputDetailEntity);
+
+	void deleteById(Long id);
+
+
+	boolean existsById(Long id);
 }

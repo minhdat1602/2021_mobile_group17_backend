@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.nlu.entity.OrderEntity;
 
 @Repository
-public interface OrderRepository extends JpaRepository<OrderEntity, Long>{
+public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 	List<OrderEntity> findAll();
 
 	OrderEntity findById(long id);
@@ -16,4 +16,8 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Long>{
 	<S extends OrderEntity> S save(S entity);
 
 	void delete(OrderEntity orderEntity);
+
+	void deleteById(Long id);
+
+	boolean existsById(Long id);
 }

@@ -21,4 +21,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	void delete(UserEntity userEntity);
 
 	<S extends UserEntity> S save(S entity);
+
+	void deleteById(Long id);
+
+	boolean existsById(Long id);
 }

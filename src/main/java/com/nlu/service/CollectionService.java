@@ -18,4 +18,33 @@ public class CollectionService {
 		List<CollectionEntity> collections = collectionRepository.findByBrand(brandId);
 		return collections;
 	}
+	
+	public List<CollectionEntity> getAll() {
+		List<CollectionEntity> categories = collectionRepository.findAll();
+		return categories;
+	}
+
+	public CollectionEntity getById(long id) {
+		CollectionEntity collection = collectionRepository.findById(id);
+		return collection;
+	}
+
+	public CollectionEntity insert(CollectionEntity collectionEntity) {
+		CollectionEntity collection = collectionRepository.save(collectionEntity);
+		return collection;
+	}
+
+	public CollectionEntity update(CollectionEntity collectionEntity) {
+		CollectionEntity collection = collectionRepository.save(collectionEntity);
+		return collection;
+	}
+
+	public void delete(long id) {
+		collectionRepository.deleteById(id);
+	}
+
+	public void deleteAll(long[] ids) {
+		for (long id : ids)
+			collectionRepository.deleteById(id);
+	}
 }

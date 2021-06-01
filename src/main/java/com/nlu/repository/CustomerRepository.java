@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.nlu.entity.CustomerEntity;
 
 @Repository
-public interface CustomerReponsitory extends JpaRepository<CustomerEntity, Long> {
+public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
 	List<CustomerEntity> findAll();
 
 	CustomerEntity findById(long id);
@@ -16,4 +16,9 @@ public interface CustomerReponsitory extends JpaRepository<CustomerEntity, Long>
 	<S extends CustomerEntity> S save(S entity);
 
 	void delete(CustomerEntity customerEntity);
+
+	void deleteById(Long id);
+
+
+	boolean existsById(Long id);
 }

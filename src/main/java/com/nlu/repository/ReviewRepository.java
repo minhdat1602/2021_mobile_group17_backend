@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.nlu.entity.ReviewEntity;
 
 @Repository
-public interface ReviewRepository extends JpaRepository<ReviewEntity, Long>{
+public interface ReviewRepository extends JpaRepository<ReviewEntity, Long> {
 	List<ReviewEntity> findAll();
 
 	ReviewEntity findById(long id);
@@ -16,4 +16,8 @@ public interface ReviewRepository extends JpaRepository<ReviewEntity, Long>{
 	<S extends ReviewEntity> S save(S entity);
 
 	void delete(ReviewEntity reviewEntity);
+
+	void deleteById(Long id);
+
+	boolean existsById(Long id);
 }

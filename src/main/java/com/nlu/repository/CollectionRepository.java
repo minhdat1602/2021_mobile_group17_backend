@@ -18,4 +18,9 @@ public interface CollectionRepository extends JpaRepository<CollectionEntity, Lo
 	<S extends CollectionEntity> S save(S entity);
 
 	void delete(CollectionEntity collectionEntity);
+
+	void deleteById(long id);
+
+
+	boolean existsById(Long id);
 }

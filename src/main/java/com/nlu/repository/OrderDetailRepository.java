@@ -16,4 +16,8 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetailEntity, 
 	<S extends OrderDetailEntity> S save(S entity);
 
 	void delete(OrderDetailEntity orderDetailEntity);
+
+	void deleteById(Long id);
+
+	boolean existsById(Long id);
 }

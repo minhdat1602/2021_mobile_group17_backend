@@ -33,4 +33,23 @@ public class UserService {
 	public UserResponse getByID(long id) {
 		return mapper.map(userRepository.findById(id), UserResponse.class);
 	}
+	
+	public UserEntity insert(UserEntity userEntity) {
+		UserEntity user = userRepository.save(userEntity);
+		return user;
+	}
+
+	public UserEntity update(UserEntity userEntity) {
+		UserEntity user = userRepository.save(userEntity);
+		return user;
+	}
+
+	public void delete(long id) {
+		userRepository.deleteById(id);
+	}
+
+	public void deleteAll(long[] ids) {
+		for (long id : ids)
+			userRepository.deleteById(id);
+	}
 }
