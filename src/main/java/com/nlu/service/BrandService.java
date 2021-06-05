@@ -24,17 +24,17 @@ public class BrandService {
 		return brand;
 	}
 
-	public BrandEntity create(BrandEntity brandEntity) {
-		BrandEntity brand = brandRepository.save(brandEntity);
-		return brand;
-	}
-
-	public BrandEntity update(BrandEntity brandEntity) {
-		if (brandRepository.existsById(brandEntity.getId())) {
-			return brandRepository.save(brandEntity);
-		} else
-			return null;
-	}
+//	public BrandEntity create(BrandEntity brandEntity) {
+//		BrandEntity brand = brandRepository.save(brandEntity);
+//		return brand;
+//	}
+//
+//	public BrandEntity update(BrandEntity brandEntity) {
+//		if (brandRepository.existsById(brandEntity.getId())) {
+//			return brandRepository.save(brandEntity);
+//		} else
+//			return null;
+//	}
 
 	public void delete(long id) {
 		brandRepository.deleteById(id);

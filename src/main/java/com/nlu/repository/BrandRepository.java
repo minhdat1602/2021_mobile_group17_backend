@@ -13,7 +13,7 @@ public interface BrandRepository extends JpaRepository<BrandEntity, Long> {
 
 	BrandEntity findById(long id);
 
-	<S extends BrandEntity> S save(BrandEntity entity);
+	<S extends BrandEntity> S save(S entity);
 
 	void deleteById(Long id);
 	
