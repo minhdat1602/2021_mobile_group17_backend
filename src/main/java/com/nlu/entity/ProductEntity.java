@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -56,9 +58,9 @@ public class ProductEntity extends BaseEntity {
 	private CategoryEntity category;
 
 	@JsonManagedReference
-	@ManyToOne
-	@JoinColumn(name = "type_id", referencedColumnName = "id")
-	private TypeEntity type;
+	@ManyToMany
+	@JoinTable(name = "product_type", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "type_id"))
+	private List<TypeEntity> types;
 
 	@JsonManagedReference
 	@ManyToOne
@@ -177,12 +179,12 @@ public class ProductEntity extends BaseEntity {
 		this.category = category;
 	}
 
-	public TypeEntity getType() {
-		return type;
+	public List<TypeEntity> getTypes() {
+		return types;
 	}
 
-	public void setType(TypeEntity type) {
-		this.type = type;
+	public void setTypes(List<TypeEntity> types) {
+		this.types = types;
 	}
 
 	public CollectionEntity getCollection() {
