@@ -12,7 +12,7 @@ import com.nlu.entity.BrandEntity;
 import com.nlu.service.BrandService;
 
 @RestController
-@RequestMapping("/api/brand")
+@RequestMapping("/brand")
 public class BrandController {
 
 	@Autowired

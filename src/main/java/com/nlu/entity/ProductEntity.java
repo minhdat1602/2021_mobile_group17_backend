@@ -61,7 +61,7 @@ public class ProductEntity extends BaseEntity {
 
 	@JsonManagedReference
 	@ManyToOne
-	@JoinTable(name = "product_type", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "type_id"))
+	@JoinTable(name = "type_id")
 	private TypeEntity type;
 
 	@JsonManagedReference
