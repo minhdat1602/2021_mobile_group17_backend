@@ -32,7 +32,7 @@ public class ProductService {
 	}
 
 	public List<ProductEntity> getByTypeId(long typeId) {
-		List<ProductEntity> products = productRepository.findByTypeId(typeId);
+		List<ProductEntity> products = productRepository.findByTypesId(typeId);
 		return products;
 	}
 
@@ -52,7 +52,7 @@ public class ProductService {
 	}
 
 	public List<ProductEntity> getByCategoryIdAndTypeId(long categoryId, long typeId) {
-		List<ProductEntity> products = productRepository.findByCategoryIdAndTypeId(categoryId, typeId);
+		List<ProductEntity> products = productRepository.findByCategoryIdAndTypesId(categoryId, typeId);
 		return products;
 	}
 
