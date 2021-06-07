@@ -17,13 +17,13 @@ public class OrderEntity extends BaseEntity {
 	private String code;
 
 	@Column(name = "total_origin_price")
-	private double total_sell_price;
+	private double totalSellPrice;
 
 	@Column(name = "total_discount")
-	private double total_discount;
+	private double totalDiscount;
 
 	@Column(name = "total_money")
-	private double total_money;
+	private double totalMoney;
 
 	@Column(name = "notes")
 	private String notes;
@@ -47,6 +47,46 @@ public class OrderEntity extends BaseEntity {
 	@OneToOne
 	@JoinColumn(name = "customer_id", referencedColumnName = "id")
 	private CustomerEntity customer;
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public double getTotalSellPrice() {
+		return totalSellPrice;
+	}
+
+	public void setTotalSellPrice(double totalSellPrice) {
+		this.totalSellPrice = totalSellPrice;
+	}
+
+	public double getTotalDiscount() {
+		return totalDiscount;
+	}
+
+	public void setTotalDiscount(double totalDiscount) {
+		this.totalDiscount = totalDiscount;
+	}
+
+	public double getTotalMoney() {
+		return totalMoney;
+	}
+
+	public void setTotalMoney(double totalMoney) {
+		this.totalMoney = totalMoney;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
 
 	public StatusEntity getStatus() {
 		return status;
@@ -80,44 +120,6 @@ public class OrderEntity extends BaseEntity {
 		this.customer = customer;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public double getTotal_sell_price() {
-		return total_sell_price;
-	}
-
-	public void setTotal_sell_price(double total_sell_price) {
-		this.total_sell_price = total_sell_price;
-	}
-
-	public double getTotal_discount() {
-		return total_discount;
-	}
-
-	public void setTotal_discount(double total_discount) {
-		this.total_discount = total_discount;
-	}
-
-	public double getTotal_money() {
-		return total_money;
-	}
-
-	public void setTotal_money(double total_money) {
-		this.total_money = total_money;
-	}
-
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
+	
 
 }

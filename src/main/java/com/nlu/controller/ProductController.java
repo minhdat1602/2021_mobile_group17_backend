@@ -13,7 +13,7 @@ import com.nlu.entity.ProductEntity;
 import com.nlu.service.ProductService;
 
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/product")
 public class ProductController {
 
 	@Autowired
@@ -22,7 +22,23 @@ public class ProductController {
 	@GetMapping("/all")
 	public ResponseEntity<List<ProductEntity>> getAll() {
 		List<ProductEntity> products = productService.getAll();
-		System.out.print("product num: " + products.size());
+		System.out.print("getAll: " + products.size());
+		
+		return ResponseEntity.ok(products);
+	}
+	
+	@GetMapping("/new")
+	public ResponseEntity<List<ProductEntity>> getNew() {
+		List<ProductEntity> products = productService.getNew();
+		System.out.print("getNew: " + products.size());
+		
+		return ResponseEntity.ok(products);
+	}
+	
+	@GetMapping("/discount")
+	public ResponseEntity<List<ProductEntity>> getDiscount() {
+		List<ProductEntity> products = productService.getDiscount();
+		System.out.print("getDiscount: " + products.size());
 		
 		return ResponseEntity.ok(products);
 	}
@@ -37,24 +53,28 @@ public class ProductController {
 	@GetMapping("/collection/{id}")
 	public ResponseEntity<?> getProductByCollectionId(@PathVariable("id") long collectionId) {
 		List<ProductEntity> products = productService.getByCollectionId(collectionId);
+		System.out.print("getProductByCollectionId: " + products.size());
 		return ResponseEntity.ok(products);
 	}
 
 	@GetMapping("/brand/{id}")
 	public ResponseEntity<?> getProductByBrandId(@PathVariable("id") long brandId) {
 		List<ProductEntity> products = productService.getByCollectionBrandId(brandId);
+		System.out.print("getProductByBrandId: " + products.size());
 		return ResponseEntity.ok(products);
 	}
 
 	@GetMapping("/category/{id}")
 	public ResponseEntity<?> getProductByCategoryId(@PathVariable("id") long categoryId) {
 		List<ProductEntity> products = productService.getByCategoryId(categoryId);
+		System.out.print("getProductByCategoryId: " + products.size());
 		return ResponseEntity.ok(products);
 	}
 	
 	@GetMapping("/type/{id}")
 	public ResponseEntity<?> getByTypeId(@PathVariable("id") long typeId) {
 		List<ProductEntity> products = productService.getByCategoryId(typeId);
+		System.out.print("getByTypeId: " + products.size());
 		return ResponseEntity.ok(products);
 	}
 	
@@ -62,6 +82,7 @@ public class ProductController {
 	public ResponseEntity<?> getByCategoryAndType(@PathVariable("category_id") long categoryId,
 													@PathVariable("type_id") long typeId) {
 		List<ProductEntity> products = productService.getByCategoryIdAndTypeId(categoryId, typeId);
+		System.out.print("getByCategoryAndType: " + products.size());
 		return ResponseEntity.ok(products);
 	}
 

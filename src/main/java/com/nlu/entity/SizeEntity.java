@@ -21,7 +21,7 @@ public class SizeEntity extends BaseEntity {
 
 	@JsonBackReference
 	@OneToMany(mappedBy = "size", targetEntity = InventoryEntity.class)
-	private Set<InventoryEntity> stocks;
+	private Set<InventoryEntity> inventories;
 
 	public String getSize() {
 		return size;
@@ -39,12 +39,12 @@ public class SizeEntity extends BaseEntity {
 		this.active = active;
 	}
 
-	public Set<InventoryEntity> getStocks() {
-		return stocks;
+	public Set<InventoryEntity> getInventories() {
+		return inventories;
 	}
 
-	public void setStocks(Set<InventoryEntity> stocks) {
-		this.stocks = stocks;
+	public void setInventories(Set<InventoryEntity> inventories) {
+		this.inventories = inventories;
 	}
 
 }

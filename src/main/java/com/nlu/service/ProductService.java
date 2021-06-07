@@ -18,6 +18,10 @@ public class ProductService {
 		return productRepository.findAll();
 	}
 
+	public List<ProductEntity> getDiscount() {
+		return productRepository.findByDiscountGreaterThan(0.0);
+	}
+
 	public ProductEntity getById(long id) {
 		return productRepository.findById(id);
 	}
@@ -29,6 +33,11 @@ public class ProductService {
 
 	public List<ProductEntity> getByTypeId(long typeId) {
 		List<ProductEntity> products = productRepository.findByTypesId(typeId);
+		return products;
+	}
+
+	public List<ProductEntity> getNew() {
+		List<ProductEntity> products = productRepository.findByIsNew(1);
 		return products;
 	}
 

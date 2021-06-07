@@ -4,7 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class TypeEntity extends BaseEntity {
 
 	@JsonBackReference
-	@ManyToMany(mappedBy = "types", targetEntity = ProductEntity.class)
+	@OneToMany(mappedBy = "type", targetEntity = ProductEntity.class)
 	private Set<ProductEntity> products;
 
 	@Column(name = "name")

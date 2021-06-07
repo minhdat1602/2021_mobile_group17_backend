@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -30,6 +29,9 @@ public class ProductEntity extends BaseEntity {
 
 	@Column(name = "price")
 	private double price;
+
+	@Column(name = "discount")
+	private double discount;
 
 	@Column(name = "hot")
 	private Integer isHot;
@@ -58,9 +60,9 @@ public class ProductEntity extends BaseEntity {
 	private CategoryEntity category;
 
 	@JsonManagedReference
-	@ManyToMany
+	@ManyToOne
 	@JoinTable(name = "product_type", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "type_id"))
-	private List<TypeEntity> types;
+	private TypeEntity type;
 
 	@JsonManagedReference
 	@ManyToOne
@@ -85,6 +87,14 @@ public class ProductEntity extends BaseEntity {
 
 	public String getCode() {
 		return code;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
 	}
 
 	public void setCode(String code) {
@@ -179,12 +189,12 @@ public class ProductEntity extends BaseEntity {
 		this.category = category;
 	}
 
-	public List<TypeEntity> getTypes() {
-		return types;
+	public TypeEntity getType() {
+		return type;
 	}
 
-	public void setTypes(List<TypeEntity> types) {
-		this.types = types;
+	public void setType(TypeEntity type) {
+		this.type = type;
 	}
 
 	public CollectionEntity getCollection() {
