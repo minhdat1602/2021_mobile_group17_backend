@@ -12,7 +12,7 @@ import com.nlu.entity.CategoryEntity;
 import com.nlu.service.CategoryService;
 
 @RestController
-@RequestMapping("/api/category")
+@RequestMapping("/category")
 public class CategoryController {
 	
 	@Autowired
