@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.nlu.entity.BrandEntity;
 import com.nlu.repository.BrandRepository;
+import com.nlu.repository.CollectionRepository;
 
 @Service
 public class BrandService {
@@ -14,8 +15,14 @@ public class BrandService {
 	@Autowired
 	private BrandRepository brandRepository;
 
+//	@Autowired
+//	private CollectionRepository collectionRepository;
+
 	public List<BrandEntity> getAll() {
 		List<BrandEntity> brands = brandRepository.findAll();
+//		for (BrandEntity brand : brands) {
+//			brand.setCollections(collectionRepository.findByBrandId(brand.getId()));
+//		}
 		return brands;
 	}
 

@@ -22,6 +22,13 @@ public class ImageEntity extends BaseEntity {
 
 	@Column(name = "display")
 	private int display;
+	
+	
+	
+	@Override
+	public String toString() {
+		return "ImageEntity [product=" + product + ", url=" + url + ", display=" + display + "]";
+	}
 
 	public ProductEntity getProduct() {
 		return product;

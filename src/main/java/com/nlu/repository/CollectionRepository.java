@@ -9,7 +9,7 @@ import com.nlu.entity.CollectionEntity;
 
 @Repository
 public interface CollectionRepository extends JpaRepository<CollectionEntity, Long> {
-	List<CollectionEntity> findByBrand(long brandId);
+	List<CollectionEntity> findByBrandId(long brandId);
 
 	List<CollectionEntity> findAll();
 

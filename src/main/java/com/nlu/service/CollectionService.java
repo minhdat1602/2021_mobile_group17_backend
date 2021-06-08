@@ -15,7 +15,7 @@ public class CollectionService {
 	private CollectionRepository collectionRepository;
 	
 	public List<CollectionEntity> getByBrand(long brandId){
-		List<CollectionEntity> collections = collectionRepository.findByBrand(brandId);
+		List<CollectionEntity> collections = collectionRepository.findByBrandId(brandId);
 		return collections;
 	}
 	

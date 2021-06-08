@@ -86,6 +86,7 @@ public class ProductEntity extends BaseEntity {
 	@OneToMany(mappedBy = "product", targetEntity = ReviewEntity.class)
 	private List<ReviewEntity> reviews;
 
+
 	public String getCode() {
 		return code;
 	}

@@ -13,7 +13,7 @@ import com.nlu.entity.CollectionEntity;
 import com.nlu.service.CollectionService;
 
 @RestController
-@RequestMapping("/api/collection")
+@RequestMapping("/collection")
 public class CollectionController {
 
 	@Autowired
