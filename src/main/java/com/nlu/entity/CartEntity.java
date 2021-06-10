@@ -1,5 +1,6 @@
 package com.nlu.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -12,7 +13,12 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "cart")
-public class CartEntity extends BaseEntity {
+public class CartEntity extends BaseEntity implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1700376141171529443L;
 
 	@JsonManagedReference
 	@OneToOne

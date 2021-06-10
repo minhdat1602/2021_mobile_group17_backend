@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "category")
-public class CategoryEntity extends BaseEntity {
+public class CategoryEntity extends BaseEntity{
 
 	@JsonBackReference
 	@OneToMany(mappedBy = "category", targetEntity = ProductEntity.class)

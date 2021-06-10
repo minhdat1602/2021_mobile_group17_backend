@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "collection")
-public class CollectionEntity extends BaseEntity {
+public class CollectionEntity extends BaseEntity{
 
 	@Column(name = "name")
 	private String name;

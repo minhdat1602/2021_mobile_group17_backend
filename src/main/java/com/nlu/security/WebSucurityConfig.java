@@ -58,6 +58,7 @@ public class WebSucurityConfig extends WebSecurityConfigurerAdapter{
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 		.authorizeRequests().antMatchers("/auth/**").permitAll()
 		.antMatchers("/api/test/**").permitAll()
+		.antMatchers("/cart/**").permitAll()
 		.antMatchers("/**").permitAll()
 		.anyRequest().authenticated()
 		.and().formLogin().loginPage("/auth/singin");

@@ -14,7 +14,7 @@ import com.nlu.common.ERole;
 
 @Entity
 @Table(name = "role")
-public class RoleEntity extends BaseEntity {
+public class RoleEntity extends BaseEntity{
 
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)

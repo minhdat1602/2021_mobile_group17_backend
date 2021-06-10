@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "size")
-public class SizeEntity extends BaseEntity {
+public class SizeEntity extends BaseEntity{
 
 	@Column(name = "size")
 	private String size;

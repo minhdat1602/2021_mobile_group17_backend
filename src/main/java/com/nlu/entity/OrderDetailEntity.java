@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "order_detail")
-public class OrderDetailEntity extends BaseEntity {
+public class OrderDetailEntity extends BaseEntity{
 
 	@ManyToOne
 	@JoinColumn(name = "order_id")

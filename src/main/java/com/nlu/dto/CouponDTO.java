@@ -1,40 +1,22 @@
-package com.nlu.entity;
+package com.nlu.dto;
 
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-@Entity
-@Table(name = "coupon")
-public class CouponEntity extends BaseEntity{
-
-	@Column(name = "code")
+public class CouponDTO  extends BaseDTO{
 	private String code;
 
-	@Column(name = "discount")
 	private double discount;
 
-	@Column(name = "max_discount")
 	private double max_discount;
 
-	@Column(name = "max_times")
 	private int max_times;
 
-	@Column(name = "date_begin")
 	private Date begin;
 
-	@Column(name = "date_end")
 	private Date end;
 
-	@JsonBackReference
-	@OneToMany(mappedBy = "coupon", targetEntity = OrderEntity.class)
-	private List<OrderEntity> orders;
+	private List<OrderDTO> orders;
 
 	public String getCode() {
 		return code;
@@ -84,12 +66,12 @@ public class CouponEntity extends BaseEntity{
 		this.end = end;
 	}
 
-	public List<OrderEntity> getOrders() {
+	public List<OrderDTO> getOrders() {
 		return orders;
 	}
 
-	public void setOrders(List<OrderEntity> orders) {
+	public void setOrders(List<OrderDTO> orders) {
 		this.orders = orders;
 	}
-
+	
 }

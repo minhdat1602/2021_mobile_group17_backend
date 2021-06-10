@@ -2,9 +2,12 @@ package com.nlu.service;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nlu.dto.CartItemDTO;
+import com.nlu.entity.CartEntity;
 import com.nlu.entity.CartItemEntity;
 import com.nlu.repository.CartItemRepository;
 
@@ -12,6 +15,9 @@ import com.nlu.repository.CartItemRepository;
 public class CartItemService {
 	@Autowired
 	private CartItemRepository cartItemRepository;
+
+	@Autowired
+	private ModelMapper moMapper;
 
 	public List<CartItemEntity> getAll() {
 		List<CartItemEntity> cartItem = cartItemRepository.findAll();
@@ -23,14 +29,26 @@ public class CartItemService {
 		return cartItem;
 	}
 
-	public CartItemEntity insert(CartItemEntity cartItemEntity) {
-		CartItemEntity cartItem = cartItemRepository.save(cartItemEntity);
-		return cartItem;
-	}
+	public CartItemDTO save(CartItemDTO cartItemDTO, CartEntity cartEntity) {
+		CartItemEntity cartItemEntity = new CartItemEntity();
 
-	public CartItemEntity update(CartItemEntity cartItemEntity) {
-		CartItemEntity cartItem = cartItemRepository.save(cartItemEntity);
-		return cartItem;
+		if (cartItemDTO.getId() != 0) {
+			CartItemEntity oldCartItemEntity = cartItemRepository.findById(cartItemDTO.getId());
+			oldCartItemEntity = moMapper.map(cartItemDTO, CartItemEntity.class);
+			cartItemEntity = oldCartItemEntity;
+		} else {
+			cartItemEntity = moMapper.map(cartItemDTO, CartItemEntity.class);
+		}
+		
+		cartItemEntity.setCart(cartEntity);
+		
+		try {
+		cartItemEntity = cartItemRepository.save(cartItemEntity);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return moMapper.map(cartItemEntity, CartItemDTO.class);
 	}
 
 	public void delete(long id) {

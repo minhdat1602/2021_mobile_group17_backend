@@ -1,39 +1,21 @@
-package com.nlu.entity;
+package com.nlu.dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-@Entity
-@Table(name = "supplier")
-public class SupplierEntity extends BaseEntity{
-
-	@Column(name = "code")
+public class SupplierDTO extends BaseDTO{
 	private String code;
 
-	@Column(name = "name")
 	private String name;
 
-	@Column(name = "phone")
 	private String phone;
 
-	@Column(name = "email")
 	private String email;
 
-	@Column(name = "address")
 	private String address;
 
-	@Column(name = "tax_code")
 	private String taxcode;
 
-	@JsonBackReference
-	@OneToMany(mappedBy = "supplier", targetEntity = InputEntity.class)
-	private List<InputEntity> input;
+	private List<InputDTO> input;
 
 	public String getCode() {
 		return code;
@@ -83,11 +65,11 @@ public class SupplierEntity extends BaseEntity{
 		this.taxcode = taxcode;
 	}
 
-	public List<InputEntity> getInput() {
+	public List<InputDTO> getInput() {
 		return input;
 	}
 
-	public void setInput(List<InputEntity> input) {
+	public void setInput(List<InputDTO> input) {
 		this.input = input;
 	}
 

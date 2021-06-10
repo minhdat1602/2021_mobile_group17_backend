@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "product")
-public class ProductEntity extends BaseEntity {
+public class ProductEntity extends BaseEntity{
 
 	@Column(name = "code")
 	private String code;

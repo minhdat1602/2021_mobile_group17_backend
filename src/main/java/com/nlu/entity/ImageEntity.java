@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "image")
-public class ImageEntity extends BaseEntity {
+public class ImageEntity extends BaseEntity{
 
 	@JsonBackReference
 	@ManyToOne

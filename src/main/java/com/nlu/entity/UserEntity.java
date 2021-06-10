@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "user", uniqueConstraints = { @UniqueConstraint(columnNames = "email") })
-public class UserEntity extends BaseEntity {
+public class UserEntity extends BaseEntity{
 
 	@NotBlank
 	@Size(max = 50)

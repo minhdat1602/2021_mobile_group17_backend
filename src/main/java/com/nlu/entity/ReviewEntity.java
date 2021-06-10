@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "review")
-public class ReviewEntity extends BaseEntity {
+public class ReviewEntity extends BaseEntity{
 
 	@JsonManagedReference
 	@ManyToOne

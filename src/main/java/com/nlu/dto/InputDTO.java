@@ -1,61 +1,32 @@
-package com.nlu.entity;
+package com.nlu.dto;
 
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-@Entity
-@Table(name = "input")
-public class InputEntity extends BaseEntity{
-
-	@Column(name = "code")
+public class InputDTO extends BaseDTO {
 	private String code;
 
-	@JsonManagedReference
-	@ManyToOne
-	@JoinColumn(name = "supplier_id")
-	private SupplierEntity supplier;
+	private SupplierDTO supplier;
 
-	@Column(name = "input_date")
 	private Date date;
 
-	@Column(name = "notes")
 	private String notes;
 
-	@Column(name = "total_price")
 	private double totalPrice;
 
-	@Column(name = "total_Quantity")
 	private double totalQuantity;
 
-	@Column(name = "discout")
 	private double discount;
 
-	@Column(name = "payed")
 	private double payed;
 
-	@Column(name = "lack")
 	private double lack;
 
-	@Column(name = "input_status")
 	private double status;
 
-	@JsonManagedReference
-	@ManyToOne
-	@JoinColumn(name = "user_init", referencedColumnName = "id")
-	private UserEntity userInit;
+	private UserDTO userInit;
 
-	@JsonManagedReference
-	@OneToMany(mappedBy = "input", targetEntity = InputDetailEntity.class)
-	private List<InputDetailEntity> inputDetails;
+	private List<InputDetailDTO> inputDetails;
 
 	public String getCode() {
 		return code;
@@ -65,11 +36,11 @@ public class InputEntity extends BaseEntity{
 		this.code = code;
 	}
 
-	public SupplierEntity getSupplier() {
+	public SupplierDTO getSupplier() {
 		return supplier;
 	}
 
-	public void setSupplier(SupplierEntity supplier) {
+	public void setSupplier(SupplierDTO supplier) {
 		this.supplier = supplier;
 	}
 
@@ -137,19 +108,19 @@ public class InputEntity extends BaseEntity{
 		this.status = status;
 	}
 
-	public UserEntity getUserInit() {
+	public UserDTO getUserInit() {
 		return userInit;
 	}
 
-	public void setUserInit(UserEntity userInit) {
+	public void setUserInit(UserDTO userInit) {
 		this.userInit = userInit;
 	}
 
-	public List<InputDetailEntity> getInputDetails() {
+	public List<InputDetailDTO> getInputDetails() {
 		return inputDetails;
 	}
 
-	public void setInputDetails(List<InputDetailEntity> inputDetails) {
+	public void setInputDetails(List<InputDetailDTO> inputDetails) {
 		this.inputDetails = inputDetails;
 	}
 

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "input_detail")
-public class InputDetailEntity extends BaseEntity {
+public class InputDetailEntity extends BaseEntity{
 
 	@JsonBackReference
 	@ManyToOne

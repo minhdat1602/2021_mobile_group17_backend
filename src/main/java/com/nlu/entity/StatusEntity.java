@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "order_status")
-public class StatusEntity extends BaseEntity {
+public class StatusEntity extends BaseEntity{
 
 	@Column(name = "status_code")
 	private String code;

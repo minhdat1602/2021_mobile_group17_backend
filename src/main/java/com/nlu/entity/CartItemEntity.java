@@ -11,11 +11,11 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "cart_item")
-public class CartItemEntity extends BaseEntity {
+public class CartItemEntity extends BaseEntity{
 
 	@JsonBackReference
 	@ManyToOne
-	@JoinColumn(name = "cart_id", referencedColumnName = "id")
+	@JoinColumn(name = "cart_id")
 	private CartEntity cart;
 
 	@JsonManagedReference
