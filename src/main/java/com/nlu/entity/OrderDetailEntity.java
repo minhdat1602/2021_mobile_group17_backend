@@ -6,12 +6,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "order_detail")
 public class OrderDetailEntity extends BaseEntity{
-
+	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private OrderEntity order;

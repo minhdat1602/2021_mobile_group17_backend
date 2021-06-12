@@ -23,11 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nlu.common.ERole;
 import com.nlu.entity.RoleEntity;
 import com.nlu.entity.UserEntity;
+import com.nlu.entity.UserInfoEntity;
 import com.nlu.payload.request.LoginRequest;
 import com.nlu.payload.request.SignupRequest;
 import com.nlu.payload.response.JwtResponse;
 import com.nlu.payload.response.MessageResponse;
 import com.nlu.repository.RoleRepository;
+import com.nlu.repository.UserInfoRepository;
 import com.nlu.repository.UserRepository;
 import com.nlu.security.jwt.JwtUtils;
 import com.nlu.security.services.UserDetailsImpl;
@@ -41,6 +43,9 @@ public class AuthController {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	private UserInfoRepository userInfoRepository;
 
 	@Autowired
 	RoleRepository roleRepository;
@@ -75,10 +80,21 @@ public class AuthController {
 
 		// Create new user's account
 		UserEntity user = new UserEntity(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
-		user.setFirstName(signUpRequest.getFirstName());
-		user.setLastName(signUpRequest.getLastName());
-		user.setPhone(signUpRequest.getPhone());
-		user.setAddress(signUpRequest.getAddress());
+		UserInfoEntity userInfoEntity = new UserInfoEntity();
+		userInfoEntity.setFirstName(signUpRequest.getFirstName());
+		userInfoEntity.setLastName(signUpRequest.getLastName());
+		userInfoEntity.setPhone(signUpRequest.getPhone());
+		userInfoEntity.setXa(signUpRequest.getXa());
+		userInfoEntity.setHuyen(signUpRequest.getHuyen());
+		userInfoEntity.setTinh(signUpRequest.getTinh());
+		
+		userInfoEntity = userInfoRepository.save(userInfoEntity);
+		
+		
+//		user.setFirstName(signUpRequest.getFirstName());
+//		user.setLastName(signUpRequest.getLastName());
+//		user.setPhone(signUpRequest.getPhone());
+//		user.setAddress(signUpRequest.getAddress());
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<RoleEntity> roles = new HashSet<>();

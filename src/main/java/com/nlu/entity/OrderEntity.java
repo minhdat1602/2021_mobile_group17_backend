@@ -1,17 +1,19 @@
 package com.nlu.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "orders")
-public class OrderEntity extends BaseEntity{
+public class OrderEntity extends BaseEntity {
 
 	@Column(name = "code")
 	private String code;
@@ -29,6 +31,10 @@ public class OrderEntity extends BaseEntity{
 	private String notes;
 
 	@JsonManagedReference
+	@OneToMany(mappedBy = "order", targetEntity = OrderDetailEntity.class)
+	private List<OrderDetailEntity> orderDetails;
+
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "order_status_id", referencedColumnName = "id")
 	private StatusEntity status;
@@ -43,10 +49,10 @@ public class OrderEntity extends BaseEntity{
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private UserEntity user;
 
-	@JsonManagedReference
-	@OneToOne
-	@JoinColumn(name = "customer_id", referencedColumnName = "id")
-	private CustomerEntity customer;
+//	@JsonManagedReference
+//	@OneToOne
+//	@JoinColumn(name = "staff_id", referencedColumnName = "id")
+//	private UserEntity staff;
 
 	public String getCode() {
 		return code;
@@ -54,6 +60,14 @@ public class OrderEntity extends BaseEntity{
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public List<OrderDetailEntity> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetailEntity> orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 
 	public double getTotalSellPrice() {
@@ -111,15 +125,13 @@ public class OrderEntity extends BaseEntity{
 	public void setUser(UserEntity user) {
 		this.user = user;
 	}
-
-	public CustomerEntity getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(CustomerEntity customer) {
-		this.customer = customer;
-	}
-
-	
+//
+//	public UserEntity getStart() {
+//		return staff;
+//	}
+//
+//	public void setStart(UserEntity start) {
+//		this.staff = start;
+//	}
 
 }

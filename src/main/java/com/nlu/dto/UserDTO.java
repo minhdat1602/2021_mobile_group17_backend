@@ -1,28 +1,24 @@
 package com.nlu.dto;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class UserDTO extends BaseDTO {
 	private String email;
 
-	private String firstName;
-
-	private String lastName;
+//	private String firstName;
+//
+//	private String lastName;
 
 	private String code;
 
-	private String gender;
-
-	private String phone;
-
-	private String address;
-
-	private Date birthday;
+//	private String gender;
+//
+//	private String phone;
+//
+//	private String address;
+//
+//	private Date birthday;
 
 	private int active;
+	UserInfoDTO userInfo;
 
 //	private List<ReviewDTO> reviews;
 //
@@ -40,20 +36,28 @@ public class UserDTO extends BaseDTO {
 		this.email = email;
 	}
 
-	public String getFirstName() {
-		return firstName;
+//	public String getFirstName() {
+//		return firstName;
+//	}
+//
+//	public void setFirstName(String firstName) {
+//		this.firstName = firstName;
+//	}
+//
+//	public String getLastName() {
+//		return lastName;
+//	}
+
+//	public void setLastName(String lastName) {
+//		this.lastName = lastName;
+//	}
+
+	public UserInfoDTO getUserInfo() {
+		return userInfo;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setUserInfo(UserInfoDTO userInfo) {
+		this.userInfo = userInfo;
 	}
 
 	public String getCode() {
@@ -64,37 +68,37 @@ public class UserDTO extends BaseDTO {
 		this.code = code;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+//	public String getGender() {
+//		return gender;
+//	}
+//
+//	public void setGender(String gender) {
+//		this.gender = gender;
+//	}
+//
+//	public String getPhone() {
+//		return phone;
+//	}
+//
+//	public void setPhone(String phone) {
+//		this.phone = phone;
+//	}
+//
+//	public String getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(String address) {
+//		this.address = address;
+//	}
+//
+//	public Date getBirthday() {
+//		return birthday;
+//	}
+//
+//	public void setBirthday(Date birthday) {
+//		this.birthday = birthday;
+//	}
 
 	public int getActive() {
 		return active;

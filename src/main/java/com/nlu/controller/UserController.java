@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nlu.payload.response.UserResponse;
 import com.nlu.service.UserService;
 
 @RestController
@@ -17,13 +16,13 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/all")
-	public ResponseEntity<?> getAll() {
-		return ResponseEntity.ok(userService.getAll());
-	}
+//	@GetMapping("/all")
+//	public ResponseEntity<?> getAll() {
+//		return ResponseEntity.ok(userService.getAll());
+//	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<UserResponse> getById(@PathVariable("id") long userId) {
+	public ResponseEntity<?> getById(@PathVariable("id") long userId) {
 		return ResponseEntity.ok(userService.getByID(userId));
 	}
 }

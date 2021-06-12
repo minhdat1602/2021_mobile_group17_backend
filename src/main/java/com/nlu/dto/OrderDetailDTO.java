@@ -1,7 +1,7 @@
 package com.nlu.dto;
 
-public class OrderDetailDTO {
-	private OrderDTO order;
+public class OrderDetailDTO extends BaseDTO{
+//	private OrderDTO order;
 
 	private double price;
 
@@ -35,13 +35,13 @@ public class OrderDetailDTO {
 		this.quantity = quantity;
 	}
 
-	public OrderDTO getOrder() {
-		return order;
-	}
-
-	public void setOrder(OrderDTO order) {
-		this.order = order;
-	}
+//	public OrderDTO getOrder() {
+//		return order;
+//	}
+//
+//	public void setOrder(OrderDTO order) {
+//		this.order = order;
+//	}
 
 	public InventoryDTO getInventory() {
 		return inventory;

@@ -1,23 +1,18 @@
-package com.nlu.payload.response;
+package com.nlu.dto;
 
 import java.util.Date;
 
-public class UserResponse {
-	private String email;
+public class UserInfoDTO extends BaseDTO{
 	private String firstName;
 	private String lastName;
 	private String gender;
 	private String phone;
-	private String address;
+
 	private Date birthday;
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	private String sonha;
+	private String xa;
+	private String huyen;
+	private String tinh;
 
 	public String getFirstName() {
 		return firstName;
@@ -51,20 +46,44 @@ public class UserResponse {
 		this.phone = phone;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public Date getBirthday() {
 		return birthday;
 	}
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+
+	public String getSonha() {
+		return sonha;
+	}
+
+	public void setSonha(String sonha) {
+		this.sonha = sonha;
+	}
+
+	public String getXa() {
+		return xa;
+	}
+
+	public void setXa(String xa) {
+		this.xa = xa;
+	}
+
+	public String getHuyen() {
+		return huyen;
+	}
+
+	public void setHuyen(String huyen) {
+		this.huyen = huyen;
+	}
+
+	public String getTinh() {
+		return tinh;
+	}
+
+	public void setTinh(String tinh) {
+		this.tinh = tinh;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.nlu.dto;
 
+import java.util.List;
+
 public class OrderDTO extends BaseDTO{
 	private String code;
 
@@ -16,8 +18,20 @@ public class OrderDTO extends BaseDTO{
 	private CouponDTO coupon;
 
 	private UserDTO user;
+	
+	private List<OrderDetailDTO> orderDetails;
+	
+	
 
-	private CustomerDTO customer;
+//	private CustomerDTO customer;
+
+	public List<OrderDetailDTO> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetailDTO> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
 
 	public String getCode() {
 		return code;
@@ -83,12 +97,12 @@ public class OrderDTO extends BaseDTO{
 		this.user = user;
 	}
 
-	public CustomerDTO getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(CustomerDTO customer) {
-		this.customer = customer;
-	}
+//	public CustomerDTO getCustomer() {
+//		return customer;
+//	}
+//
+//	public void setCustomer(CustomerDTO customer) {
+//		this.customer = customer;
+//	}
 	
 }

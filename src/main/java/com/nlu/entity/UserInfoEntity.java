@@ -1,34 +1,58 @@
-package com.nlu.payload.request;
+package com.nlu.entity;
 
 import java.util.Date;
-import java.util.Set;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-public class SignupRequest {
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
-	@NotBlank
-	@Size(max = 50)
-	@Email
-	private String email;
+@Entity
+@Table(name = "user_info")
+public class UserInfoEntity extends BaseEntity{
 
-	private Set<String> role;
-
+	@Column(name = "first_name")
 	private String firstName;
-	private String lastName;
-	private String gender;
-	private Date birthday;
-	private String phone;
-	private String sonha;
-	private String xa;
-	private String huyen;
-	private String tinh;
 
-	@NotBlank
-	@Size(min = 6, max = 40)
-	private String password;
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(name = "gender")
+	private String gender;
+
+	@Column(name = "phone")
+	private String phone;
+
+	@Column(name = "birthday")
+	private Date birthday;
+
+	@Column(name = "sonha")
+	private String sonha;
+
+	@Column(name = "xa")
+	private String xa;
+
+	@Column(name = "huyen")
+	private String huyen;
+
+	@Column(name = "tinh")
+	private String tinh;
+	
+	@JsonBackReference
+	@OneToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	private UserEntity user;
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -54,44 +78,20 @@ public class SignupRequest {
 		this.gender = gender;
 	}
 
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Set<String> getRole() {
-		return this.role;
-	}
-
-	public void setRole(Set<String> role) {
-		this.role = role;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 
 	public String getSonha() {

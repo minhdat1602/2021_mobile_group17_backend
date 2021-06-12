@@ -1,7 +1,5 @@
 package com.nlu.dto;
 
-import com.nlu.entity.SizeEntity;
-
 public class InventoryDTO  extends BaseDTO{
 //	private ProductDTO product;
 
