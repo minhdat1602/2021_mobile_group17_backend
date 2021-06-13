@@ -32,8 +32,8 @@ public class OrderDetailService {
 	public OrderDetailDTO save(OrderDetailDTO orderDetailDTO, OrderEntity orderEntity) {
 		OrderDetailEntity orderDetailEntity = new OrderDetailEntity();
 
-		if (orderDetailDTO.getId() != 0) {
-			OrderDetailEntity oldOrderDetailEntity = orderDetailRepository.findById(orderDetailDTO.getId());
+		if (orderDetailDTO.getId() != null) {
+			OrderDetailEntity oldOrderDetailEntity = orderDetailRepository.findById(orderDetailDTO.getId()).orElseThrow();
 			oldOrderDetailEntity = modelMapper.map(orderDetailDTO, OrderDetailEntity.class);
 			orderDetailEntity = oldOrderDetailEntity;
 		} else {

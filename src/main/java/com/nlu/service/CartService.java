@@ -40,7 +40,7 @@ public class CartService {
 		// Nếu cart có id là null, sẽ tạo mới cart -> insert
 		// Nếu cart có id khác null, lấy cart lên và thay đổi -> update
 		if (cartDTO.getId() != 0) {
-			CartEntity oldCartEntity = cartRepository.findById(cartDTO.getId());
+			CartEntity oldCartEntity = cartRepository.findById(cartDTO.getId()).orElseThrow();
 			oldCartEntity = moMapper.map(cartDTO, CartEntity.class);
 			cartEntity = oldCartEntity;
 		} else {

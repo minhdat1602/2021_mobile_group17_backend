@@ -27,8 +27,8 @@ public class OrderService {
 		return orders;
 	}
 
-	public OrderDTO getById(long id) {
-		OrderEntity orderEntity = orderRepository.findById(id);
+	public OrderDTO getById(Long id) {
+		OrderEntity orderEntity = orderRepository.findById(id).orElseThrow();
 		OrderDTO orderDTO = modelMapper.map(orderEntity, OrderDTO.class);
 		return orderDTO;
 	}
@@ -38,8 +38,8 @@ public class OrderService {
 		OrderEntity orderEntity = new OrderEntity();
 
 		// check for update or insert, map dto to entity for save
-		if (orderDTO.getId() != 0) {
-			OrderEntity oldOrderEntity = orderRepository.findById(orderDTO.getId());
+		if (orderDTO.getId() != null) {
+			OrderEntity oldOrderEntity = orderRepository.findById(orderDTO.getId()).orElseThrow();
 			oldOrderEntity = modelMapper.map(orderDTO, OrderEntity.class);
 			orderEntity = oldOrderEntity;
 		} else {

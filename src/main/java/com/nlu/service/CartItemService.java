@@ -33,7 +33,7 @@ public class CartItemService {
 		CartItemEntity cartItemEntity = new CartItemEntity();
 
 		if (cartItemDTO.getId() != 0) {
-			CartItemEntity oldCartItemEntity = cartItemRepository.findById(cartItemDTO.getId());
+			CartItemEntity oldCartItemEntity = cartItemRepository.findById(cartItemDTO.getId()).orElseThrow();
 			oldCartItemEntity = moMapper.map(cartItemDTO, CartItemEntity.class);
 			cartItemEntity = oldCartItemEntity;
 		} else {
