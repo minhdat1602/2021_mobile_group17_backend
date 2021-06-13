@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nlu.common.ERole;
+import com.nlu.dto.UserInfoDTO;
 import com.nlu.entity.RoleEntity;
 import com.nlu.entity.UserEntity;
 import com.nlu.entity.UserInfoEntity;
@@ -44,10 +45,10 @@ public class AuthController {
 
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Autowired
 	private UserInfoRepository userInfoRepository;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
 
@@ -73,7 +74,20 @@ public class AuthController {
 		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 
-		return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), roles));
+		UserInfoEntity userInfo = userInfoRepository.findByUserId(userDetails.getId());
+		if (userInfo == null)
+			System.out.println("NULLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+		else
+			System.out.println(userInfo.getId());
+		JwtResponse response = new JwtResponse();
+		response.setEmail(userDetails.getUsername());
+		response.setAccessToken(jwt);
+		response.setType("Bearer");
+		response.setUserInfo(modelMapper.map(userInfo, UserInfoDTO.class));
+		response.setId(userDetails.getId());
+		response.setRoles(roles);
+
+		return ResponseEntity.ok(response);
 	}
 
 	@PostMapping("/signup")
@@ -88,14 +102,12 @@ public class AuthController {
 		userInfoEntity = modelMapper.map(signUpRequest.getUserInfo(), UserInfoEntity.class);
 //		userInfoEntity.setFirstName(signUpRequest.getFirstName());
 //		userInfoEntity.setLastName(signUpRequest.getLastName());
-//		userInfoEntity.setPhone(signUpRequest.getPhone());
+//		userInfoEntity.setPhone(signUpRequest.getPhone());	
 //		userInfoEntity.setXa(signUpRequest.getXa());
 //		userInfoEntity.setHuyen(signUpRequest.getHuyen());
 //		userInfoEntity.setTinh(signUpRequest.getTinh());
 		userInfoEntity.setUser(user);
-	
-		
-		
+
 //		user.setFirstName(signUpRequest.getFirstName());
 //		user.setLastName(signUpRequest.getLastName());
 //		user.setPhone(signUpRequest.getPhone());

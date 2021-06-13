@@ -8,6 +8,8 @@ public interface UserInfoRepository extends JpaRepository<UserInfoEntity, Long>{
 	
 	UserInfoEntity findById(long id);
 	
+	UserInfoEntity findByUserId(long userId);
+	
 	<S extends UserInfoEntity> S save(S entity);
 
 }

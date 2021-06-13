@@ -40,7 +40,7 @@ public class UserEntity extends BaseEntity{
 
 	@Column(name = "active")
 	private int active;
-
+	
 	@JsonBackReference
 	@OneToMany(mappedBy = "user", targetEntity = ReviewEntity.class)
 	private List<ReviewEntity> reviews;
