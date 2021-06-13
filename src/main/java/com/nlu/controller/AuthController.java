@@ -87,8 +87,8 @@ public class AuthController {
 		userInfoEntity.setXa(signUpRequest.getXa());
 		userInfoEntity.setHuyen(signUpRequest.getHuyen());
 		userInfoEntity.setTinh(signUpRequest.getTinh());
-		
-		userInfoEntity = userInfoRepository.save(userInfoEntity);
+		userInfoEntity.setUser(user);
+	
 		
 		
 //		user.setFirstName(signUpRequest.getFirstName());
@@ -128,6 +128,7 @@ public class AuthController {
 
 		user.setRoles(roles);
 		userRepository.save(user);
+		userInfoRepository.save(userInfoEntity);
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
