@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -46,6 +47,9 @@ public class AuthController {
 	
 	@Autowired
 	private UserInfoRepository userInfoRepository;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@Autowired
 	RoleRepository roleRepository;
@@ -81,12 +85,13 @@ public class AuthController {
 		// Create new user's account
 		UserEntity user = new UserEntity(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
 		UserInfoEntity userInfoEntity = new UserInfoEntity();
-		userInfoEntity.setFirstName(signUpRequest.getFirstName());
-		userInfoEntity.setLastName(signUpRequest.getLastName());
-		userInfoEntity.setPhone(signUpRequest.getPhone());
-		userInfoEntity.setXa(signUpRequest.getXa());
-		userInfoEntity.setHuyen(signUpRequest.getHuyen());
-		userInfoEntity.setTinh(signUpRequest.getTinh());
+		userInfoEntity = modelMapper.map(signUpRequest.getUserInfo(), UserInfoEntity.class);
+//		userInfoEntity.setFirstName(signUpRequest.getFirstName());
+//		userInfoEntity.setLastName(signUpRequest.getLastName());
+//		userInfoEntity.setPhone(signUpRequest.getPhone());
+//		userInfoEntity.setXa(signUpRequest.getXa());
+//		userInfoEntity.setHuyen(signUpRequest.getHuyen());
+//		userInfoEntity.setTinh(signUpRequest.getTinh());
 		userInfoEntity.setUser(user);
 	
 		
