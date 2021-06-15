@@ -28,32 +28,33 @@ public class OrderDetailService {
 		OrderDetailEntity orderDetail = orderDetailRepository.findById(id);
 		return orderDetail;
 	}
-	
+
 	public OrderDetailDTO save(OrderDetailDTO orderDetailDTO, OrderEntity orderEntity) {
 		OrderDetailEntity orderDetailEntity = new OrderDetailEntity();
 
 		if (orderDetailDTO.getId() != null) {
-			OrderDetailEntity oldOrderDetailEntity = orderDetailRepository.findById(orderDetailDTO.getId()).orElseThrow();
+			OrderDetailEntity oldOrderDetailEntity = orderDetailRepository.findById(orderDetailDTO.getId())
+					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 			oldOrderDetailEntity = modelMapper.map(orderDetailDTO, OrderDetailEntity.class);
 			orderDetailEntity = oldOrderDetailEntity;
 		} else {
 			orderDetailEntity = modelMapper.map(orderDetailDTO, OrderDetailEntity.class);
 		}
-		
+
 		orderDetailEntity.setOrder(orderEntity);
-		
+
 		try {
 			orderDetailEntity = orderDetailRepository.save(orderDetailEntity);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		return modelMapper.map(orderDetailEntity, OrderDetailDTO.class);
 	}
 
 	public List<OrderDetailDTO> saveAll(List<OrderDetailDTO> orderDetailDTOs, OrderEntity orderEntity) {
 		List<OrderDetailDTO> results = new ArrayList<OrderDetailDTO>();
-		for(OrderDetailDTO orderDetailDTO : orderDetailDTOs) {
+		for (OrderDetailDTO orderDetailDTO : orderDetailDTOs) {
 			results.add(save(orderDetailDTO, orderEntity));
 		}
 		return results;
