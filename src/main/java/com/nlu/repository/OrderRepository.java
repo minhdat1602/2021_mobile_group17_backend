@@ -1,7 +1,6 @@
 package com.nlu.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -12,7 +11,7 @@ import com.nlu.entity.OrderEntity;
 public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 	List<OrderEntity> findAll();
 
-	Optional<OrderEntity> findById(Long id);
+	OrderEntity findById(long id);
 
 	<S extends OrderEntity> S save(S entity);
 

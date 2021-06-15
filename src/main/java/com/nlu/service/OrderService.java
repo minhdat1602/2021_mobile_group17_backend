@@ -39,8 +39,7 @@ public class OrderService {
 
 		// check for update or insert, map dto to entity for save
 		if (orderDTO.getId() != null) {
-			OrderEntity oldOrderEntity = orderRepository.findById(orderDTO.getId())
-					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+			OrderEntity oldOrderEntity = orderRepository.findById(orderDTO.getId().longValue());
 			oldOrderEntity = modelMapper.map(orderDTO, OrderEntity.class);
 			orderEntity = oldOrderEntity;
 		} else {
