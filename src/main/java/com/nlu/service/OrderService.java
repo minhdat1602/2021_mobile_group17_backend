@@ -28,7 +28,7 @@ public class OrderService {
 	}
 
 	public OrderDTO getById(Long id) {
-		OrderEntity orderEntity = orderRepository.findById(id).orElseThrow();
+		OrderEntity orderEntity = orderRepository.findById(id.longValue());
 		OrderDTO orderDTO = modelMapper.map(orderEntity, OrderDTO.class);
 		return orderDTO;
 	}
