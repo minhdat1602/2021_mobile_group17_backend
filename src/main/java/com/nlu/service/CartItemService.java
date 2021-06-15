@@ -33,21 +33,21 @@ public class CartItemService {
 		CartItemEntity cartItemEntity = new CartItemEntity();
 
 		if (cartItemDTO.getId() != 0) {
-			CartItemEntity oldCartItemEntity = cartItemRepository.findById(cartItemDTO.getId()).orElseThrow();
+			CartItemEntity oldCartItemEntity = cartItemRepository.findById(cartItemDTO.getId().longValue());
 			oldCartItemEntity = moMapper.map(cartItemDTO, CartItemEntity.class);
 			cartItemEntity = oldCartItemEntity;
 		} else {
 			cartItemEntity = moMapper.map(cartItemDTO, CartItemEntity.class);
 		}
-		
+
 		cartItemEntity.setCart(cartEntity);
-		
+
 		try {
-		cartItemEntity = cartItemRepository.save(cartItemEntity);
-		}catch(Exception e) {
+			cartItemEntity = cartItemRepository.save(cartItemEntity);
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		return moMapper.map(cartItemEntity, CartItemDTO.class);
 	}
 
