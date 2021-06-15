@@ -36,17 +36,17 @@ public class CartService {
 
 	public CartDTO save(CartDTO cartDTO) {
 		CartEntity cartEntity = new CartEntity();
-		
+
 		// Nếu cart có id là null, sẽ tạo mới cart -> insert
 		// Nếu cart có id khác null, lấy cart lên và thay đổi -> update
 		if (cartDTO.getId() != 0) {
-			CartEntity oldCartEntity = cartRepository.findById(cartDTO.getId()).orElseThrow();
+			CartEntity oldCartEntity = cartRepository.findById(cartDTO.getId().longValue());
 			oldCartEntity = moMapper.map(cartDTO, CartEntity.class);
 			cartEntity = oldCartEntity;
 		} else {
 			cartEntity = moMapper.map(cartDTO, CartEntity.class);
 		}
-		
+
 		// update, insert cho cart items
 		List<CartItemDTO> cartItemDTOs = new ArrayList<CartItemDTO>(); // ds sau khi insert, update
 		for (int i = 0; i < cartDTO.getCartItems().size(); i++) {
