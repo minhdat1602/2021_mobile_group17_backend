@@ -1,6 +1,6 @@
 package com.nlu.dto;
 
-public class OrderDetailDTO extends BaseDTO{
+public class OrderDetailDTO extends BaseDTO {
 //	private OrderDTO order;
 
 	private double price;
@@ -9,7 +9,7 @@ public class OrderDetailDTO extends BaseDTO{
 
 	private double quantity;
 
-	private InventoryDTO inventory;
+	private ProductDTO product;
 
 	public double getPrice() {
 		return price;
@@ -35,6 +35,14 @@ public class OrderDetailDTO extends BaseDTO{
 		this.quantity = quantity;
 	}
 
+	public ProductDTO getProduct() {
+		return product;
+	}
+
+	public void setProduct(ProductDTO product) {
+		this.product = product;
+	}
+
 //	public OrderDTO getOrder() {
 //		return order;
 //	}
@@ -42,13 +50,5 @@ public class OrderDetailDTO extends BaseDTO{
 //	public void setOrder(OrderDTO order) {
 //		this.order = order;
 //	}
-
-	public InventoryDTO getInventory() {
-		return inventory;
-	}
-
-	public void setInventory(InventoryDTO inventory) {
-		this.inventory = inventory;
-	}
 
 }
