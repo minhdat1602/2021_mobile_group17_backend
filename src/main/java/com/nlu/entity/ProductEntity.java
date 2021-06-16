@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "product")
-public class ProductEntity extends BaseEntity{
+public class ProductEntity extends BaseEntity {
 
 	@Column(name = "code")
 	private String code;
@@ -86,6 +86,9 @@ public class ProductEntity extends BaseEntity{
 	@OneToMany(mappedBy = "product", targetEntity = ReviewEntity.class)
 	private List<ReviewEntity> reviews;
 
+	@JsonBackReference
+	@OneToMany(mappedBy = "product", targetEntity = OrderDetailEntity.class)
+	private List<OrderDetailEntity> orderDetails;
 
 	public String getCode() {
 		return code;
@@ -237,6 +240,14 @@ public class ProductEntity extends BaseEntity{
 
 	public void setReviews(List<ReviewEntity> reviews) {
 		this.reviews = reviews;
+	}
+
+	public List<OrderDetailEntity> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetailEntity> orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 
 }

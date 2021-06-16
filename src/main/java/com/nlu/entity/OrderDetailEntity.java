@@ -27,10 +27,15 @@ public class OrderDetailEntity extends BaseEntity{
 	@Column(name = "quantity")
 	private double quantity;
 
+//	@JsonManagedReference
+//	@ManyToOne
+//	@JoinColumn(name = "inventory_id", referencedColumnName = "id")
+//	private InventoryEntity inventory;
+	
 	@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "inventory_id", referencedColumnName = "id")
-	private InventoryEntity inventory;
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
+	private ProductEntity product;
 
 	public OrderEntity getOrder() {
 		return order;
@@ -64,12 +69,21 @@ public class OrderDetailEntity extends BaseEntity{
 		this.quantity = quantity;
 	}
 
-	public InventoryEntity getInventory() {
-		return inventory;
+	public ProductEntity getProduct() {
+		return product;
 	}
 
-	public void setInventory(InventoryEntity inventory) {
-		this.inventory = inventory;
+	public void setProduct(ProductEntity product) {
+		this.product = product;
 	}
+
+//	public InventoryEntity getInventory() {
+//		return inventory;
+//	}
+//
+//	public void setInventory(InventoryEntity inventory) {
+//		this.inventory = inventory;
+//	}
+	
 
 }
