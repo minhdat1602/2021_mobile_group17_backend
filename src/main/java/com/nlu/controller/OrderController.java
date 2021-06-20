@@ -1,5 +1,7 @@
 package com.nlu.controller;
 
+import java.util.List;
+
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,12 @@ public class OrderController {
 	public ResponseEntity<?> read(@PathParam("id") long orderId){
 		OrderDTO order = orderService.getById(orderId);
 		return ResponseEntity.ok(order);
+	}
+	
+	@GetMapping("/all")
+	public ResponseEntity<?> getAll(){
+		List<OrderDTO> orders = orderService.getAll();
+		return ResponseEntity.ok(orders);
 	}
 	
 	@PostMapping()

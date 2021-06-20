@@ -1,5 +1,6 @@
 package com.nlu.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -20,11 +21,18 @@ public class OrderService {
 	private OrderDetailService orderDetailService;
 
 	@Autowired
+	private ModelMapper mapper;
+
+	@Autowired
 	private ModelMapper modelMapper;
 
-	public List<OrderEntity> getAll() {
+	public List<OrderDTO> getAll() {
 		List<OrderEntity> orders = orderRepository.findAll();
-		return orders;
+		List<OrderDTO> results = new ArrayList<>();
+		for (OrderEntity order : orders) {
+			results.add(mapper.map(order, OrderDTO.class));
+		}
+		return results;
 	}
 
 	public OrderDTO getById(Long id) {
