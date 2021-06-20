@@ -1,5 +1,6 @@
 package com.nlu.dto;
 
+import java.util.Date;
 import java.util.List;
 
 public class OrderDTO extends BaseDTO{
@@ -21,9 +22,19 @@ public class OrderDTO extends BaseDTO{
 	
 	private List<OrderDetailDTO> orderDetails;
 	
+	private Date createdDate;
+	
 	
 
 //	private CustomerDTO customer;
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
 
 	public List<OrderDetailDTO> getOrderDetails() {
 		return orderDetails;

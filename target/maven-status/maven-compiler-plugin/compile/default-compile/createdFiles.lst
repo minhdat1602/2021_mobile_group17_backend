@@ -18,7 +18,6 @@ com\nlu\service\BrandService.class
 com\nlu\config\JpaAuditingConfig.class
 com\nlu\service\CouponService.class
 com\nlu\service\RoleService.class
-com\nlu\service\CustomerService.class
 com\nlu\service\SizeService.class
 com\nlu\repository\CollectionRepository.class
 com\nlu\repository\StatusRepository.class
@@ -41,7 +40,6 @@ com\nlu\security\jwt\AuthTokenFilter.class
 com\nlu\payload\response\JwtResponse.class
 com\nlu\controller\ProductController.class
 com\nlu\controller\TypeController.class
-com\nlu\entity\CustomerEntity.class
 com\nlu\repository\OrderDetailRepository.class
 com\nlu\service\CartService.class
 com\nlu\repository\ImageRepository.class
@@ -82,12 +80,9 @@ com\nlu\entity\BrandEntity.class
 com\nlu\entity\CouponEntity.class
 com\nlu\service\TypeService.class
 com\nlu\controller\UserController.class
-com\nlu\repository\CustomerRepository.class
 com\nlu\entity\SupplierEntity.class
 com\nlu\entity\CategoryEntity.class
 com\nlu\repository\BrandRepository.class
-com\nlu\config\CharacterEncodingConfig.class
-com\nlu\payload\response\UserResponse.class
 com\nlu\payload\request\SignupRequest.class
 com\nlu\service\UserService.class
 com\nlu\controller\CollectionController.class

@@ -23,8 +23,8 @@ public class InventoryEntity extends BaseEntity{
 	@JoinColumn(name = "size_id", referencedColumnName = "id")
 	private SizeEntity size;
 
-	@Column(name = "quantity")
-	private Integer quantity;
+		@Column(name = "quantity")
+		private Integer quantity;
 
 	public ProductEntity getProduct() {
 		return product;

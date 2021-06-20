@@ -5,6 +5,7 @@ import java.util.List;
 public class BrandDTO extends BaseDTO{
 	
 	private String name;
+	
 	private List<CollectionDTO> collections;
 	
 	public String getName() {
