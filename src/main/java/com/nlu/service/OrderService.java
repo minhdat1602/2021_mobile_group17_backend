@@ -27,7 +27,7 @@ public class OrderService {
 	private ModelMapper modelMapper;
 
 	public List<OrderDTO> getAll() {
-		List<OrderEntity> orders = orderRepository.findAll();
+		List<OrderEntity> orders = orderRepository.findByOrderByCreatedDateDesc();
 		List<OrderDTO> results = new ArrayList<>();
 		for (OrderEntity order : orders) {
 			results.add(mapper.map(order, OrderDTO.class));

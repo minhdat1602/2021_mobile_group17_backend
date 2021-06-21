@@ -9,7 +9,7 @@ import com.nlu.entity.OrderEntity;
 
 @Repository
 public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
-	List<OrderEntity> findAll();
+	List<OrderEntity> findByOrderByCreatedDateDesc();
 
 	OrderEntity findById(long id);
 
