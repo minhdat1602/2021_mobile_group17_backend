@@ -9,7 +9,7 @@ public class CollectionDTO  extends BaseDTO{
 
 	private BrandDTO brand;
 
-	private Set<ProductDTO> products;
+//	private Set<ProductDTO> products;
 
 	public String getName() {
 		return name;
@@ -35,12 +35,12 @@ public class CollectionDTO  extends BaseDTO{
 		this.brand = brand;
 	}
 
-	public Set<ProductDTO> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Set<ProductDTO> products) {
-		this.products = products;
-	}
+//	public Set<ProductDTO> getProducts() {
+//		return products;
+//	}
+//
+//	public void setProducts(Set<ProductDTO> products) {
+//		this.products = products;
+//	}
 
 }

@@ -1,7 +1,7 @@
 package com.nlu.dto;
 
 public class InputDetailDTO  extends BaseDTO{
-	private InputDTO input;
+//	private InputDTO input;
 
 	private int quantity;
 
@@ -9,13 +9,13 @@ public class InputDetailDTO  extends BaseDTO{
 
 	private double price;
 
-	public InputDTO getInput() {
-		return input;
-	}
-
-	public void setInput(InputDTO input) {
-		this.input = input;
-	}
+//	public InputDTO getInput() {
+//		return input;
+//	}
+//
+//	public void setInput(InputDTO input) {
+//		this.input = input;
+//	}
 
 	public int getQuantity() {
 		return quantity;

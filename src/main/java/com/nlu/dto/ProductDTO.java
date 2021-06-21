@@ -38,7 +38,7 @@ public class ProductDTO extends BaseDTO {
 
 	private Set<InventoryDTO> inventories;
 
-	private Set<InputDetailDTO> inputDetails;
+//	private Set<InputDetailDTO> inputDetails;
 
 	private List<ReviewDTO> reviews;
 
@@ -178,13 +178,13 @@ public class ProductDTO extends BaseDTO {
 		this.inventories = inventories;
 	}
 
-	public Set<InputDetailDTO> getInputDetails() {
-		return inputDetails;
-	}
-
-	public void setInputDetails(Set<InputDetailDTO> inputDetails) {
-		this.inputDetails = inputDetails;
-	}
+//	public Set<InputDetailDTO> getInputDetails() {
+//		return inputDetails;
+//	}
+//
+//	public void setInputDetails(Set<InputDetailDTO> inputDetails) {
+//		this.inputDetails = inputDetails;
+//	}
 
 	public List<ReviewDTO> getReviews() {
 		return reviews;
