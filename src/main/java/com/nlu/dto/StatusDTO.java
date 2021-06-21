@@ -9,7 +9,7 @@ public class StatusDTO extends BaseDTO{
 
 	private int active;
 
-	private List<OrderDTO> orders;
+//	private List<OrderDTO> orders;
 
 	public String getCode() {
 		return code;
@@ -35,12 +35,12 @@ public class StatusDTO extends BaseDTO{
 		this.active = active;
 	}
 
-	public List<OrderDTO> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<OrderDTO> orders) {
-		this.orders = orders;
-	}
+//	public List<OrderDTO> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(List<OrderDTO> orders) {
+//		this.orders = orders;
+//	}
 
 }
