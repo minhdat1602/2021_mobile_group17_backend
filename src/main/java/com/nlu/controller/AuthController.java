@@ -36,6 +36,8 @@ import com.nlu.repository.UserRepository;
 import com.nlu.security.jwt.JwtUtils;
 import com.nlu.security.services.UserDetailsImpl;
 
+import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/auth")
@@ -95,6 +97,7 @@ public class AuthController {
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
 		}
+		
 
 		// Create new user's account
 		UserEntity user = new UserEntity(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
@@ -107,6 +110,7 @@ public class AuthController {
 //		userInfoEntity.setHuyen(signUpRequest.getHuyen());
 //		userInfoEntity.setTinh(signUpRequest.getTinh());
 		userInfoEntity.setUser(user);
+		System.out.println(signUpRequest.getUserInfo().getFirstName());
 
 //		user.setFirstName(signUpRequest.getFirstName());
 //		user.setLastName(signUpRequest.getLastName());
