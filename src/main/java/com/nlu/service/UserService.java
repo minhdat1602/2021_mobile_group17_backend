@@ -51,10 +51,10 @@ public class UserService {
 		}
 		
 		//update userInfo
-		UserInfoEntity userInfoEntity = userEntity.getUserInfo();
+		UserInfoEntity userInfoEntity = mapper.map(userDTO.getUserInfo(),UserInfoEntity.class);
 		
-		UserInfoEntity oldUserInfoEntity = userInfoRepository.findById(userInfoEntity.getId().longValue());
-		oldUserInfoEntity = mapper.map(userDTO,UserInfoEntity.class);
+		UserInfoEntity oldUserInfoEntity = userInfoRepository.findById(userDTO.getUserInfo().getId().longValue());
+		oldUserInfoEntity = userInfoEntity;
 		oldUserInfoEntity.setUser(userEntity);
 		userInfoEntity = userInfoRepository.save(oldUserInfoEntity);
 		
