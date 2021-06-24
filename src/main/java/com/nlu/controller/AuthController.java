@@ -35,9 +35,6 @@ import com.nlu.repository.UserInfoRepository;
 import com.nlu.repository.UserRepository;
 import com.nlu.security.jwt.JwtUtils;
 import com.nlu.security.services.UserDetailsImpl;
-import com.sun.tools.sjavac.Log;
-
-import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -112,7 +109,7 @@ public class AuthController {
 //		userInfoEntity.setTinh(signUpRequest.getTinh());
 		userInfoEntity.setUser(user);
 		System.out.println(signUpRequest.getUserInfo().getFirstName());
-		Log.debug(signUpRequest.getUserInfo().getFirstName());
+		
 
 //		user.setFirstName(signUpRequest.getFirstName());
 //		user.setLastName(signUpRequest.getLastName());
