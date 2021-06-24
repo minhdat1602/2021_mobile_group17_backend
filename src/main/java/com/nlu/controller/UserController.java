@@ -15,7 +15,7 @@ import com.nlu.service.UserInfoService;
 import com.nlu.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping()
 public class UserController {
 
 	@Autowired
@@ -29,19 +29,19 @@ public class UserController {
 //		return ResponseEntity.ok(userService.getAll());
 //	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/user/{id}")
 	public ResponseEntity<?> getById(@PathVariable("id") long userId) {
 		return ResponseEntity.ok(userService.getByID(userId));
 	}
 	
-	@PutMapping
+	@PutMapping("/user")
 	public ResponseEntity<?>  updateUser(@RequestBody UserDTO userDTO){
 		UserDTO result = userService.save(userDTO);
 		return ResponseEntity.ok(result);
 		
 	}
 	
-	@PutMapping("/userInfo")
+	@PutMapping("/user/userInfo")
 	public ResponseEntity<?>  updateUserInfo(@RequestBody UserInfoDTO userInfoDTO){
 		UserInfoDTO result = userInfoService.save(userInfoDTO);
 		return ResponseEntity.ok(result);
