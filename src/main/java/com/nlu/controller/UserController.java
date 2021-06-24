@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nlu.dto.UserDTO;
+import com.nlu.dto.UserInfoDTO;
+import com.nlu.service.UserInfoService;
 import com.nlu.service.UserService;
 
 @RestController
@@ -18,6 +20,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private UserInfoService userInfoService;
 
 //	@GetMapping("/all")
 //	public ResponseEntity<?> getAll() {
@@ -31,11 +36,17 @@ public class UserController {
 	
 	@PutMapping
 	public ResponseEntity<?>  updateUser(@RequestBody UserDTO userDTO){
-		
 		UserDTO result = userService.save(userDTO);
-		
 		return ResponseEntity.ok(result);
 		
 	}
+	
+	@PutMapping("/userInfo")
+	public ResponseEntity<?>  updateUserInfo(@RequestBody UserInfoDTO userInfoDTO){
+		UserInfoDTO result = userInfoService.save(userInfoDTO);
+		return ResponseEntity.ok(result);
+		
+	}
+	
 	
 }

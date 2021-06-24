@@ -16,10 +16,10 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private UserInfoRepository userInfoRepository;
-	
+
 	@Autowired
 	private ModelMapper mapper;
 
@@ -36,34 +36,24 @@ public class UserService {
 	public UserDTO getByID(long id) {
 		return mapper.map(userRepository.findById(id), UserDTO.class);
 	}
-	
+
 	public UserDTO save(UserDTO userDTO) {
-		
-		//insert or update
+
+		// insert or update
 		UserEntity userEntity = new UserEntity();
-		
-		if(userDTO.getId() != null) {
+
+		if (userDTO.getId() != null) {
 			UserEntity oldUserEntity = userRepository.findById(userDTO.getId().longValue());
 			oldUserEntity = mapper.map(userDTO, UserEntity.class);
 			userEntity = oldUserEntity;
-		}else {
+		} else {
 			userEntity = mapper.map(userDTO, UserEntity.class);
 		}
-		
-		//update userInfo
-		UserInfoEntity userInfoEntity = mapper.map(userDTO.getUserInfo(),UserInfoEntity.class);
-		
-		UserInfoEntity oldUserInfoEntity = userInfoRepository.findById(userDTO.getUserInfo().getId().longValue());
-		oldUserInfoEntity = userInfoEntity;
-		oldUserInfoEntity.setUser(userEntity);
-		userInfoEntity = userInfoRepository.save(oldUserInfoEntity);
-		
-		//update
+
+		// update
 		userEntity = userRepository.save(userEntity);
 		UserDTO result = mapper.map(userEntity, UserDTO.class);
-		result.setUserInfo(mapper.map(userInfoEntity, UserInfoDTO.class));
-		
-		
+
 		return result;
 	}
 
