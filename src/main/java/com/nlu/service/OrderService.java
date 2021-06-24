@@ -11,6 +11,7 @@ import com.nlu.dto.OrderDTO;
 import com.nlu.dto.OrderDetailDTO;
 import com.nlu.entity.OrderEntity;
 import com.nlu.repository.OrderRepository;
+import com.nlu.repository.StatusRepository;
 
 @Service
 public class OrderService {
@@ -19,7 +20,10 @@ public class OrderService {
 
 	@Autowired
 	private OrderDetailService orderDetailService;
-
+	
+	@Autowired
+	private StatusRepository statusRepository;
+	
 	@Autowired
 	private ModelMapper mapper;
 
@@ -55,12 +59,13 @@ public class OrderService {
 		}
 		// save and map entity for returns
 		orderEntity = orderRepository.save(orderEntity);
+		orderEntity.setStatus(statusRepository.findById(orderEntity.getStatus().getId().longValue()));
 		OrderDTO result = modelMapper.map(orderEntity, OrderDTO.class);
 		// save order end
 
 		// save order details
 		List<OrderDetailDTO> orderDetailResults = orderDetailService.saveAll(orderDTO.getOrderDetails(), orderEntity);
-
+		
 		// returns
 		result.setOrderDetails(orderDetailResults);
 		return result;
