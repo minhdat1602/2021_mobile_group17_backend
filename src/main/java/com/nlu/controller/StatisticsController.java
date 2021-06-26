@@ -40,9 +40,9 @@ public class StatisticsController {
 		//
 		OrderStatistics result = new OrderStatistics();
 		result.setSales(sales);
-		result.setMin(min(sales));
-		result.setMax(max(sales));
-		result.setAverage(avg(sales));
+		result.setMin(Math.floor(min(sales) * 10) / 10);
+		result.setMax(Math.floor(max(sales)));
+		result.setAverage(Math.floor(avg(sales)));
 
 		return ResponseEntity.ok(result);
 	}
