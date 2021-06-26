@@ -1,7 +1,5 @@
 package com.nlu.dto;
 
-import java.util.List;
-
 public class StatusDTO extends BaseDTO{
 	private String code;
 

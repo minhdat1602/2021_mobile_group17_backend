@@ -1,7 +1,5 @@
 package com.nlu.dto;
 
-import java.util.Set;
-
 public class TypeDTO extends BaseDTO{
 //	private Set<ProductDTO> products;
 

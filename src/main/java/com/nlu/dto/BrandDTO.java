@@ -1,7 +1,5 @@
 package com.nlu.dto;
 
-import java.util.List;
-
 public class BrandDTO extends BaseDTO{
 	
 	private String name;

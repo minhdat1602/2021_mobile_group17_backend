@@ -2,13 +2,14 @@ package com.nlu.repository;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.nlu.entity.OrderEntity;
 
 @Repository
-public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
+public interface OrderRepository extends CrudRepository<OrderEntity, Long> {
 	List<OrderEntity> findByOrderByCreatedDateDesc();
 
 	OrderEntity findById(long id);
@@ -20,4 +21,9 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 	void deleteById(Long id);
 
 	boolean existsById(Long id);
+	
+	@Query(value = "SELECT MONTH(created_date) as month,YEAR(created_date) as year,SUM(total_money) as sales, COUNT(*) as count\r\n"
+			+ "FROM orders GROUP BY MONTH(created_date), YEAR(created_date)\r\n"
+			+ "ORDER BY YEAR(created_date) desc, MONTH(created_date) desc", nativeQuery = true)
+	List<Object[]> findSalesStatistics();
 }
