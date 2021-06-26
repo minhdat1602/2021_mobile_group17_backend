@@ -21,7 +21,7 @@ public class StatisticsController {
 	@Autowired
 	OrderRepository orderRepository;
 
-	@GetMapping("/sales")
+	@GetMapping("/order")
 
 	public ResponseEntity<?> statisticsSales() {
 		List<Object[]> salesStatistics = orderRepository.findSalesStatistics();
