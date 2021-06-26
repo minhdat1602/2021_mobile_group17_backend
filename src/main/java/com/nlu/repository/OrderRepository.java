@@ -24,6 +24,6 @@ public interface OrderRepository extends CrudRepository<OrderEntity, Long> {
 	
 	@Query(value = "SELECT MONTH(created_date) as month,YEAR(created_date) as year,SUM(total_money) as sales, COUNT(*) as count\r\n"
 			+ "FROM orders GROUP BY MONTH(created_date), YEAR(created_date)\r\n"
-			+ "ORDER BY YEAR(created_date) desc, MONTH(created_date) desc", nativeQuery = true)
+			+ "ORDER BY YEAR(created_date) desc, MONTH(created_date) desc LIMIT 6", nativeQuery = true)
 	List<Object[]> findSalesStatistics();
 }
