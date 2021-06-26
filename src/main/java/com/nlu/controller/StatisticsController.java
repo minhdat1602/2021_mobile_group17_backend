@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nlu.dto.OrderStatistics;
 import com.nlu.dto.SalesStatistics;
 import com.nlu.repository.OrderRepository;
 
@@ -23,20 +24,51 @@ public class StatisticsController {
 	@GetMapping("/sales")
 
 	public ResponseEntity<?> statisticsSales() {
-		List<Object[]> result = orderRepository.findSalesStatistics();
-		List<SalesStatistics> response = new ArrayList<SalesStatistics>();
+		List<Object[]> salesStatistics = orderRepository.findSalesStatistics();
+		List<SalesStatistics> sales = new ArrayList<SalesStatistics>();
 		SalesStatistics st;
-		if (result != null && !result.isEmpty()) {
-			st = new SalesStatistics();
-			for (Object[] object : result) {
+		if (salesStatistics != null && !salesStatistics.isEmpty()) {
+			for (Object[] object : salesStatistics) {
+				st = new SalesStatistics();
 				st.setMonth((Integer) object[0]);
 				st.setYear((Integer) object[1]);
 				st.setSales((Double) object[2]);
 				st.setCount(((BigInteger) object[3]).longValue());
-				response.add(st);
+				sales.add(st);
 			}
 		}
-		return ResponseEntity.ok(response);
+		//
+		OrderStatistics result = new OrderStatistics();
+		result.setSales(sales);
+		result.setMin(min(sales));
+		result.setMax(max(sales));
+		result.setAverage(avg(sales));
+
+		return ResponseEntity.ok(result);
+	}
+
+	private double min(List<SalesStatistics> sales) {
+		double min = Integer.MIN_VALUE;
+		for (SalesStatistics item : sales)
+			if (min > item.getSales())
+				min = item.getSales();
+		return min;
+	}
+
+	private double max(List<SalesStatistics> sales) {
+		double max = Integer.MAX_VALUE;
+		for (SalesStatistics item : sales)
+			if (max < item.getSales())
+				max = item.getSales();
+		return max;
+	}
+
+	private double avg(List<SalesStatistics> sales) {
+		double sum = 0;
+		for (SalesStatistics item : sales)
+
+			sum += item.getSales();
+		return sum / sales.size();
 	}
 
 }
