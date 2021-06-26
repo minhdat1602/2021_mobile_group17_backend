@@ -51,7 +51,7 @@ public class StatisticsController {
 	}
 
 	private double min(List<SalesStatistics> sales) {
-		double min = Integer.MIN_VALUE;
+		double min = Integer.MAX_VALUE;
 		for (SalesStatistics item : sales)
 			if (min > item.getSales())
 				min = item.getSales();
@@ -59,7 +59,7 @@ public class StatisticsController {
 	}
 
 	private double max(List<SalesStatistics> sales) {
-		double max = Integer.MAX_VALUE;
+		double max = Integer.MIN_VALUE;
 		for (SalesStatistics item : sales)
 			if (max < item.getSales())
 				max = item.getSales();
