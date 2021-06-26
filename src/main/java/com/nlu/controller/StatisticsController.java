@@ -34,7 +34,7 @@ public class StatisticsController {
 				st.setYear((Integer) object[1]);
 				st.setSales((Double) object[2]);
 				st.setCount(((BigInteger) object[3]).longValue());
-				sales.add(st);
+				sales.add(0,st);
 			}
 		}
 		//
