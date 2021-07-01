@@ -28,8 +28,8 @@ public interface OrderRepository extends CrudRepository<OrderEntity, Long> {
 	List<Object[]> findSalesStatistics();
 
 	@Query(value = "select * from (\r\n"
-			+ "	(select COUNT(id) as order_num, SUM(total_money) as sales, SUM(total_money - total_origin_price) as profit\r\n"
-			+ "	from orders\r\n" + "	where created_date = CURRENT_DATE ) as A,\r\n"
+			+ "	(select COUNT(id) as order_num, SUM(total_money) as sales, SUM(total_origin_price - total_money) as profit\r\n"
+			+ "	from orders\r\n" + "	where Date(created_date) = CURDATE() ) as A,\r\n"
 			+ "	(select COUNT(id) as user_new\r\n" + "	from user\r\n"
 			+ "	where Date(created_date) = CURDATE() ) as B)", nativeQuery = true)
 	List<Object[]> findDayStatistic();
