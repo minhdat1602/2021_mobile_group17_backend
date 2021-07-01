@@ -34,18 +34,30 @@ public class StatisticsController {
 				st.setYear((Integer) object[1]);
 				st.setSales((Double) object[2]);
 				st.setCount(((BigInteger) object[3]).longValue());
-				sales.add(0,st);
+				sales.add(0, st);
 			}
 		}
 		//
 		OrderStatistics result = new OrderStatistics();
 		result.setSales(sales);
-		int min = (int)min(sales);
-		int max = (int)max(sales);
+		int min = (int) min(sales);
+		int max = (int) max(sales);
 		int avg = (int) avg(sales);
 		result.setMin(min);
 		result.setMax(max);
 		result.setAverage(avg);
+
+		List<Object[]> dayStatistic = orderRepository.findDayStatistic();
+
+		if (dayStatistic != null) {
+			for(Object[] object : dayStatistic) {
+				BigInteger n0 = (BigInteger) object[0];
+				result.setOrderNumDay(n0.longValue());
+				result.setSalesDay((Double) object[1]);
+				result.setProfitDay((Double) object[2]);
+				result.setUserNewDay(((BigInteger) object[3]).longValue());
+			}
+		}
 
 		return ResponseEntity.ok(result);
 	}

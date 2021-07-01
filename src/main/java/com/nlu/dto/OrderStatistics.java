@@ -7,9 +7,12 @@ public class OrderStatistics {
 	private double max;
 	private double min;
 	private double average;
-	private int dayNum;
-	private int weekNum;
-	private int monthNum;
+	private Long orderNumDay;
+	private Double salesDay;
+	private Double profitDay;
+	private Long userNewDay;
+	private Integer weekNum;
+	private Integer monthNum;
 
 	public List<SalesStatistics> getSales() {
 		return sales;
@@ -43,31 +46,51 @@ public class OrderStatistics {
 		this.average = average;
 	}
 
-	public void setAverage(int average) {
-		this.average = average;
+	public Long getOrderNumDay() {
+		return orderNumDay;
 	}
 
-	public int getDayNum() {
-		return dayNum;
+	public void setOrderNumDay(Long orderNumDay) {
+		this.orderNumDay = orderNumDay;
 	}
 
-	public void setDayNum(int dayNum) {
-		this.dayNum = dayNum;
+	public Double getSalesDay() {
+		return salesDay;
 	}
 
-	public int getWeekNum() {
+	public void setSalesDay(Double salesDay) {
+		this.salesDay = salesDay;
+	}
+
+	public Double getProfitDay() {
+		return profitDay;
+	}
+
+	public void setProfitDay(Double profitDay) {
+		this.profitDay = profitDay;
+	}
+
+	public Long getUserNewDay() {
+		return userNewDay;
+	}
+
+	public void setUserNewDay(Long userNewDay) {
+		this.userNewDay = userNewDay;
+	}
+
+	public Integer getWeekNum() {
 		return weekNum;
 	}
 
-	public void setWeekNum(int weekNum) {
+	public void setWeekNum(Integer weekNum) {
 		this.weekNum = weekNum;
 	}
 
-	public int getMonthNum() {
+	public Integer getMonthNum() {
 		return monthNum;
 	}
 
-	public void setMonthNum(int monthNum) {
+	public void setMonthNum(Integer monthNum) {
 		this.monthNum = monthNum;
 	}
 
