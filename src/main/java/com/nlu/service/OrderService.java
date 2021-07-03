@@ -38,6 +38,15 @@ public class OrderService {
 		}
 		return results;
 	}
+	
+	public List<OrderDTO> getByStatus(Long statusId){
+		List<OrderEntity> orders = orderRepository.findByStatusId(statusId);
+		List<OrderDTO> results = new ArrayList<>();
+		for (OrderEntity order : orders) {
+			results.add(mapper.map(order, OrderDTO.class));
+		}
+		return results;
+	}
 
 	public OrderDTO getById(Long id) {
 		OrderEntity orderEntity = orderRepository.findById(id.longValue());

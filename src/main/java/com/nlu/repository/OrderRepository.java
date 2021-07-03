@@ -13,6 +13,8 @@ public interface OrderRepository extends CrudRepository<OrderEntity, Long> {
 	List<OrderEntity> findByOrderByCreatedDateDesc();
 
 	OrderEntity findById(long id);
+	
+	List<OrderEntity> findByStatusId(long statusId);
 
 	<S extends OrderEntity> S save(S entity);
 
