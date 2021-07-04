@@ -85,10 +85,10 @@ public class OrderService {
 		// save order end
 
 		// save order details
-//		List<OrderDetailDTO> orderDetailResults = orderDetailService.saveAll(orderDTO.getOrderDetails(), orderEntity);
+		List<OrderDetailDTO> orderDetailResults = orderDetailService.saveAll(orderDTO.getOrderDetails(), orderEntity);
 		
 		// returns
-//		result.setOrderDetails(orderDetailResults);
+		result.setOrderDetails(orderDetailResults);
 		return result;
 	}
 
