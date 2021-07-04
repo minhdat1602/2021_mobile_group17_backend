@@ -35,4 +35,7 @@ public interface OrderRepository extends CrudRepository<OrderEntity, Long> {
 			+ "	(select COUNT(id) as user_new\r\n" + "	from user\r\n"
 			+ "	where Date(created_date) = CURDATE() ) as B)", nativeQuery = true)
 	List<Object[]> findDayStatistic();
+	
+	List<OrderEntity> findByUserId(long userId);
+	List<OrderEntity> findByUserIdAndStatusId(long userId, long statusId);
 }

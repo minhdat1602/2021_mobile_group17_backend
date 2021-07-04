@@ -27,11 +27,23 @@ public class OrderService {
 	@Autowired
 	private ModelMapper mapper;
 
-	@Autowired
-	private ModelMapper modelMapper;
+	
 
 	public List<OrderDTO> getAll() {
 		List<OrderEntity> orders = orderRepository.findByOrderByCreatedDateDesc();
+		List<OrderDTO> results = new ArrayList<>();
+		for (OrderEntity order : orders) {
+			results.add(mapper.map(order, OrderDTO.class));
+		}
+		return results;
+	}
+	
+	public List<OrderDTO> getByUser(Long userId, Long statusId) {
+		List<OrderEntity> orders;
+		if(statusId == null)
+			orders = orderRepository.findByUserId(userId.longValue());
+		else
+			orders = orderRepository.findByUserIdAndStatusId(userId.longValue(), statusId.longValue());
 		List<OrderDTO> results = new ArrayList<>();
 		for (OrderEntity order : orders) {
 			results.add(mapper.map(order, OrderDTO.class));
@@ -50,7 +62,7 @@ public class OrderService {
 
 	public OrderDTO getById(Long id) {
 		OrderEntity orderEntity = orderRepository.findById(id.longValue());
-		OrderDTO orderDTO = modelMapper.map(orderEntity, OrderDTO.class);
+		OrderDTO orderDTO = mapper.map(orderEntity, OrderDTO.class);
 		return orderDTO;
 	}
 
@@ -61,22 +73,22 @@ public class OrderService {
 		// check for update or insert, map dto to entity for save
 		if (orderDTO.getId() != null) {
 			OrderEntity oldOrderEntity = orderRepository.findById(orderDTO.getId().longValue());
-			oldOrderEntity = modelMapper.map(orderDTO, OrderEntity.class);
+			oldOrderEntity = mapper.map(orderDTO, OrderEntity.class);
 			orderEntity = oldOrderEntity;
 		} else {
-			orderEntity = modelMapper.map(orderDTO, OrderEntity.class);
+			orderEntity = mapper.map(orderDTO, OrderEntity.class);
 		}
 		// save and map entity for returns
 		orderEntity = orderRepository.save(orderEntity);
 		orderEntity.setStatus(statusRepository.findById(orderEntity.getStatus().getId().longValue()));
-		OrderDTO result = modelMapper.map(orderEntity, OrderDTO.class);
+		OrderDTO result = mapper.map(orderEntity, OrderDTO.class);
 		// save order end
 
 		// save order details
-		List<OrderDetailDTO> orderDetailResults = orderDetailService.saveAll(orderDTO.getOrderDetails(), orderEntity);
+//		List<OrderDetailDTO> orderDetailResults = orderDetailService.saveAll(orderDTO.getOrderDetails(), orderEntity);
 		
 		// returns
-		result.setOrderDetails(orderDetailResults);
+//		result.setOrderDetails(orderDetailResults);
 		return result;
 	}
 

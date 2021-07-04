@@ -35,7 +35,13 @@ public class OrderController {
 		List<OrderDTO> orders = orderService.getAll();
 		return ResponseEntity.ok(orders);
 	}
-
+	
+	@GetMapping("/user")
+	public ResponseEntity<?> getByUser(@PathParam("userId") Long userId, @PathParam("statusId") Long statusId) {
+		List<OrderDTO> orders = orderService.getByUser(userId, statusId);
+		return ResponseEntity.ok(orders);
+	}
+	
 	@PostMapping()
 	public ResponseEntity<?> save(@RequestBody OrderDTO orderDTO) {
 		OrderDTO order = orderService.save(orderDTO);
