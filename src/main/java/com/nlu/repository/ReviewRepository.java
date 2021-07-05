@@ -13,6 +13,8 @@ public interface ReviewRepository extends JpaRepository<ReviewEntity, Long> {
 
 	ReviewEntity findById(long id);
 
+	List<ReviewEntity> findByProductId(Long productId);
+
 	<S extends ReviewEntity> S save(S entity);
 
 	void delete(ReviewEntity reviewEntity);

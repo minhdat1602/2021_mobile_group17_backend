@@ -3,6 +3,7 @@ package com.nlu.dto;
 import java.util.Date;
 
 public class ReviewDTO extends BaseDTO {
+	
 	private ProductDTO product;
 
 	private UserDTO user;

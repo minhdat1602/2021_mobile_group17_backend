@@ -40,7 +40,7 @@ public class ProductDTO extends BaseDTO {
 
 //	private Set<InputDetailDTO> inputDetails;
 
-	private List<ReviewDTO> reviews;
+//	private List<ReviewDTO> reviews;
 
 	public String getCode() {
 		return code;
@@ -186,12 +186,12 @@ public class ProductDTO extends BaseDTO {
 //		this.inputDetails = inputDetails;
 //	}
 
-	public List<ReviewDTO> getReviews() {
-		return reviews;
-	}
-
-	public void setReviews(List<ReviewDTO> reviews) {
-		this.reviews = reviews;
-	}
+//	public List<ReviewDTO> getReviews() {
+//		return reviews;
+//	}
+//
+//	public void setReviews(List<ReviewDTO> reviews) {
+//		this.reviews = reviews;
+//	}
 
 }

@@ -1,7 +1,5 @@
 package com.nlu.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -12,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "review")
-public class ReviewEntity extends BaseEntity{
+public class ReviewEntity extends BaseEntity {
 
 	@JsonManagedReference
 	@ManyToOne
@@ -32,9 +30,6 @@ public class ReviewEntity extends BaseEntity{
 
 	@Column(name = "status")
 	private int status;
-
-	@Column(name = "date_init")
-	private Date dateInit;
 
 	public ProductEntity getProduct() {
 		return product;
@@ -74,14 +69,6 @@ public class ReviewEntity extends BaseEntity{
 
 	public void setStatus(int status) {
 		this.status = status;
-	}
-
-	public Date getDateInit() {
-		return dateInit;
-	}
-
-	public void setDateInit(Date dateInit) {
-		this.dateInit = dateInit;
 	}
 
 }
