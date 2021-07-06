@@ -1,9 +1,12 @@
 package com.nlu.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -31,12 +34,24 @@ public class ReviewEntity extends BaseEntity {
 	@Column(name = "status")
 	private int status;
 
+	@JsonManagedReference
+	@OneToMany(mappedBy = "review", targetEntity = ImageEntity.class)
+	private Set<ImageEntity> images;
+
 	public ProductEntity getProduct() {
 		return product;
 	}
 
 	public void setProduct(ProductEntity product) {
 		this.product = product;
+	}
+
+	public Set<ImageEntity> getImages() {
+		return images;
+	}
+
+	public void setImages(Set<ImageEntity> images) {
+		this.images = images;
 	}
 
 	public UserEntity getUser() {

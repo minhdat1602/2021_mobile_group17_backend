@@ -10,24 +10,35 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "image")
-public class ImageEntity extends BaseEntity{
+public class ImageEntity extends BaseEntity {
 
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private ProductEntity product;
 
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "review_id", referencedColumnName = "id")
+	private ReviewEntity review;
+
 	@Column(name = "url")
 	private String url;
 
 	@Column(name = "display")
 	private int display;
-	
-	
-	
+
 	@Override
 	public String toString() {
 		return "ImageEntity [product=" + product + ", url=" + url + ", display=" + display + "]";
+	}
+
+	public ReviewEntity getReview() {
+		return review;
+	}
+
+	public void setReview(ReviewEntity review) {
+		this.review = review;
 	}
 
 	public ProductEntity getProduct() {

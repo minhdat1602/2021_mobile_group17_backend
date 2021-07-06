@@ -1,9 +1,10 @@
 package com.nlu.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class ReviewDTO extends BaseDTO {
-	
+
 	private ProductDTO product;
 
 	private UserDTO user;
@@ -14,10 +15,20 @@ public class ReviewDTO extends BaseDTO {
 
 	private int status;
 
-	private Date dateInit;
+	private Date createdDate;
+
+	List<ImageDTO> images;
 
 	public ProductDTO getProduct() {
 		return product;
+	}
+
+	public List<ImageDTO> getImages() {
+		return images;
+	}
+
+	public void setImages(List<ImageDTO> images) {
+		this.images = images;
 	}
 
 	public void setProduct(ProductDTO product) {
@@ -56,12 +67,12 @@ public class ReviewDTO extends BaseDTO {
 		this.status = status;
 	}
 
-	public Date getDateInit() {
-		return dateInit;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setDateInit(Date dateInit) {
-		this.dateInit = dateInit;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 }
