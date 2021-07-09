@@ -1,6 +1,6 @@
 package com.nlu.payload.response;
 
-public class Success {
+public class Data {
 	private String status;
 	private Object data;
 

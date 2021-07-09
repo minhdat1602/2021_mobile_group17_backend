@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nlu.dto.ReviewDTO;
-import com.nlu.payload.response.Fail;
-import com.nlu.payload.response.Success;
+import com.nlu.payload.response.Message;
+import com.nlu.payload.response.Data;
 import com.nlu.service.ReviewService;
 
 @RestController
@@ -26,17 +26,27 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 
+	@GetMapping("/exist")
+	public ResponseEntity<?> checkExist(@PathParam(value = "productId") Long productId,
+			@PathParam(value = "userId") Long userId) {
+		Boolean result = reviewService.existComment(userId, productId);
+		Message response = new Message();
+		response.setStatus("success");
+		response.setMessage(result.toString());
+		return ResponseEntity.ok(response);
+	}
+
 	@GetMapping
 	public ResponseEntity<?> getByProduct(@PathParam(value = "productId") Long productId) {
 		List<ReviewDTO> data;
 		try {
 			data = reviewService.getByProduct(productId);
-			Success response = new Success();
+			Data response = new Data();
 			response.setStatus("success");
 			response.setData(data);
 			return ResponseEntity.ok(response);
 		} catch (Exception e) {
-			Fail response = new Fail();
+			Message response = new Message();
 			response.setStatus("500");
 			response.setMessage(e.getMessage());
 			return ResponseEntity.ok(response);
@@ -48,12 +58,12 @@ public class ReviewController {
 		ReviewDTO data;
 		try {
 			data = reviewService.save(reviewDTO);
-			Success response = new Success();
+			Data response = new Data();
 			response.setStatus("success");
 			response.setData(data);
 			return ResponseEntity.ok(response);
 		} catch (Exception e) {
-			Fail response = new Fail();
+			Message response = new Message();
 			response.setStatus("fail");
 			response.setMessage(e.getMessage());
 			return ResponseEntity.ok(response);
@@ -65,12 +75,12 @@ public class ReviewController {
 		ReviewDTO data;
 		try {
 			data = reviewService.save(reviewDTO);
-			Success response = new Success();
+			Data response = new Data();
 			response.setStatus("success");
 			response.setData(data);
 			return ResponseEntity.ok(response);
 		} catch (Exception e) {
-			Fail response = new Fail();
+			Message response = new Message();
 			response.setStatus("fail");
 			response.setMessage(e.getMessage());
 			return ResponseEntity.ok(response);
@@ -82,12 +92,12 @@ public class ReviewController {
 //		ReviewDTO data;
 		try {
 			reviewService.delete(reviewDTO.getId());
-			Success response = new Success();
+			Data response = new Data();
 			response.setStatus("success");
 			response.setData(null);
 			return ResponseEntity.ok(response);
 		} catch (Exception e) {
-			Fail response = new Fail();
+			Message response = new Message();
 			response.setStatus("fail");
 			response.setMessage(e.getMessage());
 			return ResponseEntity.ok(response);

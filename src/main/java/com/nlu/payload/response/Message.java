@@ -1,6 +1,6 @@
 package com.nlu.payload.response;
 
-public class Fail {
+public class Message {
 	public String status;
 	public String message;
 

@@ -7,7 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nlu.dto.ImageDTO;
 import com.nlu.dto.ReviewDTO;
+import com.nlu.entity.ImageEntity;
 import com.nlu.entity.ReviewEntity;
 import com.nlu.repository.ReviewRepository;
 
@@ -18,7 +20,13 @@ public class ReviewService {
 	private ReviewRepository reviewRepository;
 
 	@Autowired
+	private ImageService imageService;
+	@Autowired
 	private ModelMapper mapper;
+
+	public Boolean existComment(Long userId, Long productId) {
+		return reviewRepository.existsByUserIdAndProductId(userId, productId);
+	}
 
 	public List<ReviewDTO> getByProduct(Long productId) {
 		List<ReviewEntity> reviewEntitys = reviewRepository.findByProductId(productId);
@@ -30,6 +38,7 @@ public class ReviewService {
 	}
 
 	public ReviewDTO save(ReviewDTO reviewDTO) {
+
 		ReviewEntity reviewEntity = new ReviewEntity();
 		if (reviewDTO.getId() != null) {
 			ReviewEntity oldReviewEntity = reviewRepository.findById(reviewDTO.getId().longValue());
@@ -40,8 +49,24 @@ public class ReviewService {
 		}
 
 		reviewEntity = reviewRepository.save(reviewEntity);
+		ReviewDTO result = mapper.map(reviewEntity, ReviewDTO.class);
 
-		return mapper.map(reviewEntity, ReviewDTO.class);
+		List<ImageDTO> images = saveImages(reviewDTO.getImages(), reviewEntity);
+		result.setImages(images);
+
+		return result;
+	}
+
+	List<ImageDTO> saveImages(List<ImageDTO> imageDTOs, ReviewEntity r) {
+
+		List<ImageDTO> results = new ArrayList<ImageDTO>();
+		for (ImageDTO imageDTO : imageDTOs) {
+			ImageEntity imageEntity = mapper.map(imageDTO, ImageEntity.class);
+			imageEntity.setReview(r);
+			imageEntity = imageService.save(imageEntity);
+			results.add(mapper.map(imageEntity, ImageDTO.class));
+		}
+		return results;
 	}
 
 	public List<ReviewEntity> getAll() {
