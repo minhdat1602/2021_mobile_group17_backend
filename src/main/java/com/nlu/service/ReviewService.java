@@ -51,7 +51,9 @@ public class ReviewService {
 		reviewEntity = reviewRepository.save(reviewEntity);
 		ReviewDTO result = mapper.map(reviewEntity, ReviewDTO.class);
 
-		List<ImageDTO> images = saveImages(reviewDTO.getImages(), reviewEntity);
+		List<ImageDTO> images = null;
+		if (reviewDTO.getImages() != null)
+			images = saveImages(reviewDTO.getImages(), reviewEntity);
 		result.setImages(images);
 
 		return result;
