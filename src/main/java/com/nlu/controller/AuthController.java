@@ -96,7 +96,7 @@ public class AuthController {
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			Message message = new Message();
 			message.setStatus("fail");
-			message.setStatus("Email is already in use!");
+			message.setMessage("Email is already in use!");
 			return ResponseEntity.ok(message);
 		}
 
@@ -107,26 +107,40 @@ public class AuthController {
 		Set<RoleEntity> roles = new HashSet<>();
 
 		if (strRoles == null) {
-			RoleEntity userRole = roleRepository.findByCode(ERole.ROLE_USER)
+			RoleEntity userRole = roleRepository.findByCode(ERole.USER)
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 			roles.add(userRole);
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
 				case "admin":
-					RoleEntity adminRole = roleRepository.findByCode(ERole.ROLE_ADMIN)
+					RoleEntity adminRole = roleRepository.findByCode(ERole.ADMIN)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(adminRole);
 
 					break;
-				case "mod":
-					RoleEntity modRole = roleRepository.findByCode(ERole.ROLE_MODERATOR)
+				case "order":
+					RoleEntity orderRole = roleRepository.findByCode(ERole.ORDER)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-					roles.add(modRole);
-
+					roles.add(orderRole);
+					break;
+				case "product":
+					RoleEntity productRole = roleRepository.findByCode(ERole.ORDER)
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(productRole);
+					break;
+				case "config":
+					RoleEntity configRole = roleRepository.findByCode(ERole.ORDER)
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(configRole);
+					break;
+				case "dashboard":
+					RoleEntity dashboard = roleRepository.findByCode(ERole.ORDER)
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					roles.add(dashboard);
 					break;
 				default:
-					RoleEntity userRole = roleRepository.findByCode(ERole.ROLE_USER)
+					RoleEntity userRole = roleRepository.findByCode(ERole.USER)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(userRole);
 				}
