@@ -1,14 +1,14 @@
 package com.nlu.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nlu.dto.UserDTO;
-import com.nlu.dto.UserInfoDTO;
 import com.nlu.entity.UserEntity;
-import com.nlu.entity.UserInfoEntity;
-import com.nlu.repository.UserInfoRepository;
 import com.nlu.repository.UserRepository;
 
 @Service
@@ -18,41 +18,38 @@ public class UserService {
 	private UserRepository userRepository;
 
 	@Autowired
-	private UserInfoRepository userInfoRepository;
-
-	@Autowired
 	private ModelMapper mapper;
 
-//	public List<UserResponse> getAll() {
-//		List<UserEntity> users = userRepository.findAll();
-//
-//		List<UserResponse> usersResponse = new ArrayList<>();
-//		for (UserEntity user : users) {
-//			usersResponse.add(mapper.map(user, UserResponse.class));
-//		}
-//		return usersResponse;
-//	}
+	public List<UserDTO> getAll() {
+		List<UserEntity> userEntities = userRepository.findAll();
+		List<UserDTO> result = new ArrayList<UserDTO>();
+		for (UserEntity entity : userEntities) {
+			result.add(mapper.map(entity, UserDTO.class));
+		}
+		return result;
+	}
 
 	public UserDTO getByID(long id) {
 		return mapper.map(userRepository.findById(id), UserDTO.class);
 	}
 
-	public UserDTO save(UserDTO userDTO) {
+	public UserEntity save(UserEntity userEntity) {
 
 		// insert or update
-		UserEntity userEntity = new UserEntity();
+		UserEntity result = new UserEntity();
 
-		if (userDTO.getId() != null) {
-			UserEntity oldUserEntity = userRepository.findById(userDTO.getId().longValue());
-			oldUserEntity = mapper.map(userDTO, UserEntity.class);
-			userEntity = oldUserEntity;
+		if (userEntity.getId() != null) {
+			UserEntity oldUserEntity = userRepository.findById(userEntity.getId().longValue());
+			oldUserEntity = mapper.map(userEntity, UserEntity.class);
+			result = oldUserEntity;
 		} else {
-			userEntity = mapper.map(userDTO, UserEntity.class);
+			result = mapper.map(userEntity, UserEntity.class);
 		}
 
-		// update
-		userEntity = userRepository.save(userEntity);
-		UserDTO result = mapper.map(userEntity, UserDTO.class);
+		// update, insert
+		result = userRepository.save(userEntity);
+
+		// update userInfoEntity
 
 		return result;
 	}

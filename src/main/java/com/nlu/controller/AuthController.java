@@ -29,7 +29,7 @@ import com.nlu.entity.UserInfoEntity;
 import com.nlu.payload.request.LoginRequest;
 import com.nlu.payload.request.SignupRequest;
 import com.nlu.payload.response.JwtResponse;
-import com.nlu.payload.response.MessageResponse;
+import com.nlu.payload.response.Message;
 import com.nlu.repository.RoleRepository;
 import com.nlu.repository.UserInfoRepository;
 import com.nlu.repository.UserRepository;
@@ -40,6 +40,7 @@ import com.nlu.security.services.UserDetailsImpl;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
+
 	@Autowired
 	AuthenticationManager authenticationManager;
 
@@ -93,28 +94,14 @@ public class AuthController {
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
+			Message message = new Message();
+			message.setStatus("fail");
+			message.setStatus("Email is already in use!");
+			return ResponseEntity.ok(message);
 		}
-		
 
 		// Create new user's account
 		UserEntity user = new UserEntity(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
-		UserInfoEntity userInfoEntity = new UserInfoEntity();
-		userInfoEntity = modelMapper.map(signUpRequest.getUserInfo(), UserInfoEntity.class);
-//		userInfoEntity.setFirstName(signUpRequest.getFirstName());
-//		userInfoEntity.setLastName(signUpRequest.getLastName());
-//		userInfoEntity.setPhone(signUpRequest.getPhone());	
-//		userInfoEntity.setXa(signUpRequest.getXa());
-//		userInfoEntity.setHuyen(signUpRequest.getHuyen());
-//		userInfoEntity.setTinh(signUpRequest.getTinh());
-		userInfoEntity.setUser(user);
-		System.out.println(signUpRequest.getUserInfo().getFirstName());
-		
-
-//		user.setFirstName(signUpRequest.getFirstName());
-//		user.setLastName(signUpRequest.getLastName());
-//		user.setPhone(signUpRequest.getPhone());
-//		user.setAddress(signUpRequest.getAddress());
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<RoleEntity> roles = new HashSet<>();
@@ -147,9 +134,21 @@ public class AuthController {
 		}
 
 		user.setRoles(roles);
+		// Tạo mới user với email, password và roles;
 		userRepository.save(user);
-		userInfoRepository.save(userInfoEntity);
 
-		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+		// Tạo mới thông của của user;
+		UserInfoEntity userInfoEntity = new UserInfoEntity();
+		if (userInfoEntity != null) {
+			userInfoEntity = modelMapper.map(signUpRequest.getUserInfo(), UserInfoEntity.class);
+			userInfoEntity.setUser(user);
+			userInfoRepository.save(userInfoEntity);
+		}
+
+		Message response = new Message();
+		response.setStatus("success");
+		response.setMessage("User registered successfully!");
+
+		return ResponseEntity.ok(response);
 	}
 }

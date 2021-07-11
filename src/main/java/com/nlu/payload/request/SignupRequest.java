@@ -16,10 +16,9 @@ public class SignupRequest {
 	private String email;
 
 	private Set<String> role;
-	
-	
+
 	UserInfoDTO userInfo;
-	
+
 //	private String firstName;
 //	private String lastName;
 //	private String gender;
