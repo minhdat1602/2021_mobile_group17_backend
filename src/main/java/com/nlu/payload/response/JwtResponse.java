@@ -6,7 +6,7 @@ import com.nlu.dto.UserInfoDTO;
 
 public class JwtResponse {
 	private String accessToken;
-	private String type = "Bearer";
+	private String tokenType = "Bearer";
 	private Long id;
 	private String email;
 	private List<String> roles;
@@ -23,16 +23,16 @@ public class JwtResponse {
 //		this.roles = roles;
 //	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
+	}
+
+	public String getTokenType() {
+		return tokenType;
+	}
+
+	public void setTokenType(String tokenType) {
+		this.tokenType = tokenType;
 	}
 
 	public UserInfoDTO getUserInfo() {
@@ -49,14 +49,6 @@ public class JwtResponse {
 
 	public void setAccessToken(String accessToken) {
 		this.accessToken = accessToken;
-	}
-
-	public String getTokenType() {
-		return type;
-	}
-
-	public void setTokenType(String tokenType) {
-		this.type = tokenType;
 	}
 
 	public Long getId() {

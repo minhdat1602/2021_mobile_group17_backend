@@ -83,7 +83,7 @@ public class AuthController {
 		JwtResponse response = new JwtResponse();
 		response.setEmail(userDetails.getUsername());
 		response.setAccessToken(jwt);
-		response.setType("Bearer");
+		response.setTokenType("Bearer");
 		response.setUserInfo(modelMapper.map(userInfo, UserInfoDTO.class));
 		response.setId(userDetails.getId());
 		response.setRoles(roles);
@@ -117,7 +117,6 @@ public class AuthController {
 					RoleEntity adminRole = roleRepository.findByCode(ERole.ADMIN)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(adminRole);
-
 					break;
 				case "order":
 					RoleEntity orderRole = roleRepository.findByCode(ERole.ORDER)
