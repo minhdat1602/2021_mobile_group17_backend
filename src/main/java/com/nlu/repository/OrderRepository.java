@@ -38,4 +38,11 @@ public interface OrderRepository extends CrudRepository<OrderEntity, Long> {
 	
 	List<OrderEntity> findByUserId(long userId);
 	List<OrderEntity> findByUserIdAndStatusId(long userId, long statusId);
+	
+	
+	@Query(value = "select  user.id, SUM(total_money) as total_price, COUNT(total_money) as buy_num\r\n"
+			+ "from orders join user on user.id = orders.user_id\r\n"
+			+ "group by user_id\r\n"
+			+ "LIMIT 10", nativeQuery = true)
+	List<Object[]> findTopUser();
 }

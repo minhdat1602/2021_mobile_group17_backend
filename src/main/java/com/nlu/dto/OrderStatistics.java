@@ -4,6 +4,7 @@ import java.util.List;
 
 public class OrderStatistics {
 	private List<SalesStatistics> sales;
+	private List<TopUser> topUsers;
 	private double max;
 	private double min;
 	private double average;
@@ -13,6 +14,14 @@ public class OrderStatistics {
 	private Long userNewDay;
 	private Integer weekNum;
 	private Integer monthNum;
+
+	public List<TopUser> getTopUsers() {
+		return topUsers;
+	}
+
+	public void setTopUsers(List<TopUser> topUsers) {
+		this.topUsers = topUsers;
+	}
 
 	public List<SalesStatistics> getSales() {
 		return sales;

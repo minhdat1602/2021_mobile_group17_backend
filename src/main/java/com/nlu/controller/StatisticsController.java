@@ -1,7 +1,5 @@
 package com.nlu.controller;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,52 +10,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nlu.dto.OrderStatistics;
 import com.nlu.dto.SalesStatistics;
-import com.nlu.repository.OrderRepository;
+import com.nlu.dto.TopUser;
+import com.nlu.service.OrderService;
 
 @RestController
 @RequestMapping("/statistics")
 public class StatisticsController {
 
 	@Autowired
-	OrderRepository orderRepository;
+	private OrderService orderService;
 
 	@GetMapping("/order")
-
 	public ResponseEntity<?> statisticsSales() {
-		List<Object[]> salesStatistics = orderRepository.findSalesStatistics();
-		List<SalesStatistics> sales = new ArrayList<SalesStatistics>();
-		SalesStatistics st;
-		if (salesStatistics != null && !salesStatistics.isEmpty()) {
-			for (Object[] object : salesStatistics) {
-				st = new SalesStatistics();
-				st.setMonth((Integer) object[0]);
-				st.setYear((Integer) object[1]);
-				st.setSales((Double) object[2]);
-				st.setCount(((BigInteger) object[3]).longValue());
-				sales.add(0, st);
-			}
-		}
-		//
-		OrderStatistics result = new OrderStatistics();
+		OrderStatistics result = orderService.getMonth();
+
+		List<SalesStatistics> sales = orderService.getSales();
 		result.setSales(sales);
+
+		List<TopUser> topUsers = orderService.getTopUser();
+		result.setTopUsers(topUsers);
+
 		int min = (int) min(sales);
 		int max = (int) max(sales);
 		int avg = (int) avg(sales);
 		result.setMin(min);
 		result.setMax(max);
 		result.setAverage(avg);
-
-		List<Object[]> dayStatistic = orderRepository.findDayStatistic();
-
-		if (dayStatistic != null) {
-			for(Object[] object : dayStatistic) {
-				BigInteger n0 = (BigInteger) object[0];
-				result.setOrderNumDay(n0.longValue());
-				result.setSalesDay((Double) object[1]);
-				result.setProfitDay((Double) object[2]);
-				result.setUserNewDay(((BigInteger) object[3]).longValue());
-			}
-		}
 
 		return ResponseEntity.ok(result);
 	}
