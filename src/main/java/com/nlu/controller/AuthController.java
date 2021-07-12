@@ -86,7 +86,7 @@ public class AuthController {
 		response.setTokenType("Bearer");
 		response.setUserInfo(modelMapper.map(userInfo, UserInfoDTO.class));
 		response.setId(userDetails.getId());
-		response.setRoles(roles);
+		response.setRole(roles);
 
 		return ResponseEntity.ok(response);
 	}

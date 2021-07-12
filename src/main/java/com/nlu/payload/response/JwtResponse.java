@@ -9,7 +9,7 @@ public class JwtResponse {
 	private String tokenType = "Bearer";
 	private Long id;
 	private String email;
-	private List<String> roles;
+	private List<String> role;
 	private UserInfoDTO userInfo;
 
 	public JwtResponse() {
@@ -23,8 +23,12 @@ public class JwtResponse {
 //		this.roles = roles;
 //	}
 
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
+	public void setRole(List<String> role) {
+		this.role = role;
+	}
+	
+	public List<String> getRole() {
+		return role;
 	}
 
 	public String getTokenType() {
@@ -67,7 +71,5 @@ public class JwtResponse {
 		this.email = email;
 	}
 
-	public List<String> getRoles() {
-		return roles;
-	}
+
 }
