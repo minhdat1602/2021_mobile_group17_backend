@@ -57,11 +57,13 @@ public class WebSucurityConfig extends WebSecurityConfigurerAdapter{
 		.exceptionHandling().authenticationEntryPoint(unAuthorizedHandler).and()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 		.authorizeRequests().antMatchers("/auth/**").permitAll()
+		.antMatchers("/admin/product").hasAnyRole("ADMIN", "PRODUCT")
 		.antMatchers("/api/test/**").permitAll()
 		.antMatchers("/cart/**").permitAll()
 		.antMatchers("/**").permitAll()
 		.anyRequest().authenticated()
-		.and().formLogin().loginPage("/auth/singin");
+		.and().formLogin().loginPage("/auth/singin")
+		;
 		
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 		

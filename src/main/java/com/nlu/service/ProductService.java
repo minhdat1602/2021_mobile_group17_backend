@@ -1,10 +1,13 @@
 package com.nlu.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nlu.dto.ProductDTO;
 import com.nlu.entity.ProductEntity;
 import com.nlu.repository.ProductRepository;
 
@@ -13,6 +16,18 @@ public class ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
+
+	@Autowired
+	private ModelMapper mapper;
+
+	public List<ProductDTO> getAlll() {
+		List<ProductEntity> entities = productRepository.findAll();
+		List<ProductDTO> dtos = new ArrayList<ProductDTO>();
+		for (ProductEntity entity : entities) {
+			dtos.add(mapper.map(entity, ProductDTO.class));
+		}
+		return dtos;
+	}
 
 	public List<ProductEntity> getAll() {
 		return productRepository.findAll();
