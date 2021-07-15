@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nlu.dto.BrandDto;
+import com.nlu.dto.CollectionDto;
 import com.nlu.entity.BrandEntity;
 import com.nlu.exceptions.ResoureNotFoundException;
 import com.nlu.repository.BrandRepository;
@@ -35,8 +36,16 @@ public class BrandService {
 		return this.brandRepository
 				.findAll()
 				.stream()
-				.map((brand) -> mapper.map(brand, BrandDto.class))
+				.map((brand) -> entityToDto(brand))
 				.collect(Collectors.toList());
+	}
+	
+	public BrandDto entityToDto(BrandEntity entity) {
+		BrandDto dto = mapper.map(entity, BrandDto.class);
+		for(CollectionDto col : dto.getCollections()) {
+			col.setBrandId(dto.getId());
+		}
+		return dto;
 	}
 
 	public BrandDto getById(Long id) {

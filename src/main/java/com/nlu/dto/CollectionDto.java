@@ -8,5 +8,5 @@ import lombok.Setter;
 public class CollectionDto extends BaseDto {
 	private String name;
 
-	private Integer brandId;
+	private Long brandId;
 }
