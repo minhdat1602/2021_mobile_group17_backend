@@ -3,7 +3,7 @@ package com.nlu.dto;
 import java.util.Date;
 import java.util.List;
 
-public class InputDTO extends BaseDTO {
+public class InputDTO extends BaseDto {
 	private String code;
 
 	private SupplierDTO supplier;

@@ -1,6 +1,6 @@
 package com.nlu.dto;
 
-public class UserDTO extends BaseDTO {
+public class UserDTO extends BaseDto {
 	private String email;
 
 //	private String firstName;

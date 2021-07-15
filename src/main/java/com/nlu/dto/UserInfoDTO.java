@@ -2,7 +2,7 @@ package com.nlu.dto;
 
 import java.util.Date;
 
-public class UserInfoDTO extends BaseDTO{
+public class UserInfoDTO extends BaseDto{
 	private String firstName;
 	private String lastName;
 	private String gender;

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nlu.dto.BrandDTO;
+import com.nlu.dto.BrandDto;
 import com.nlu.exceptions.ResoureNotFoundException;
 import com.nlu.payload.response.MessageResponse;
 import com.nlu.service.Impl.BrandService;
@@ -32,23 +32,23 @@ public class BrandController {
 	}
 
 	@GetMapping("/all")
-	public List<BrandDTO> getAll() {
+	public List<BrandDto> getAll() {
 		return brandService.getAll();
 	}
 
 	@GetMapping("{id}")
-	public BrandDTO findById(@PathVariable Long id) {
+	public BrandDto findById(@PathVariable Long id) {
 		return this.brandService.getById(id);
 	}
 
 	@PostMapping()
-	public BrandDTO insert(@RequestBody @Valid BrandDTO brandDTO) {
+	public BrandDto insert(@RequestBody @Valid BrandDto brandDTO) {
 		brandDTO.setId(null);
 		return this.brandService.save(brandDTO);
 	}
 
 	@PutMapping()
-	public BrandDTO update(@RequestBody @Valid BrandDTO brandDTO) {
+	public BrandDto update(@RequestBody @Valid BrandDto brandDTO) {
 		if (brandDTO.getId() == null || !this.brandService.existId(brandDTO.getId()))
 			throw new ResoureNotFoundException("brand");
 		else

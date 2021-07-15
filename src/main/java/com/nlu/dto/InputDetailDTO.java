@@ -1,6 +1,6 @@
 package com.nlu.dto;
 
-public class InputDetailDTO  extends BaseDTO{
+public class InputDetailDTO  extends BaseDto{
 //	private InputDTO input;
 
 	private int quantity;

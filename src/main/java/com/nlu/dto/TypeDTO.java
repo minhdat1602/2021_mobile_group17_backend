@@ -1,6 +1,6 @@
 package com.nlu.dto;
 
-public class TypeDTO extends BaseDTO{
+public class TypeDTO extends BaseDto{
 //	private Set<ProductDTO> products;
 
 	private String name;

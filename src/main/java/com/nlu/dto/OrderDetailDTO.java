@@ -1,6 +1,6 @@
 package com.nlu.dto;
 
-public class OrderDetailDTO extends BaseDTO {
+public class OrderDetailDTO extends BaseDto {
 //	private OrderDTO order;
 
 	private double price;

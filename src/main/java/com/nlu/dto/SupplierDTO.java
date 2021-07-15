@@ -2,7 +2,7 @@ package com.nlu.dto;
 
 import java.util.List;
 
-public class SupplierDTO extends BaseDTO{
+public class SupplierDTO extends BaseDto{
 	private String code;
 
 	private String name;

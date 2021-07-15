@@ -7,7 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nlu.dto.BrandDTO;
+import com.nlu.dto.BrandDto;
 import com.nlu.entity.BrandEntity;
 import com.nlu.exceptions.ResoureNotFoundException;
 import com.nlu.repository.BrandRepository;
@@ -31,21 +31,21 @@ public class BrandService {
 		return  entity != null ? true : false;
 	}
 	
-	public List<BrandDTO> getAll() {
+	public List<BrandDto> getAll() {
 		return this.brandRepository
 				.findAll()
 				.stream()
-				.map((brand) -> mapper.map(brand, BrandDTO.class))
+				.map((brand) -> mapper.map(brand, BrandDto.class))
 				.collect(Collectors.toList());
 	}
 
-	public BrandDTO getById(Long id) {
+	public BrandDto getById(Long id) {
 		BrandEntity brand = brandRepository.findById(id)
 				.orElseThrow(() -> new ResoureNotFoundException(id));
-		return mapper.map(brand, BrandDTO.class);
+		return mapper.map(brand, BrandDto.class);
 	}
 
-	public BrandDTO save(BrandDTO brandDTO) {
+	public BrandDto save(BrandDto brandDTO) {
 		BrandEntity brandEntity = new BrandEntity();
 		if(brandDTO.getId() == null) {
 			brandEntity = mapper.map(brandDTO, BrandEntity.class);
@@ -57,7 +57,7 @@ public class BrandService {
 		
 		brandEntity = this.brandRepository.save(brandEntity);
 		
-		return mapper.map(brandEntity, BrandDTO.class);
+		return mapper.map(brandEntity, BrandDto.class);
 	}
 
 	public void deleteById(Long id) {

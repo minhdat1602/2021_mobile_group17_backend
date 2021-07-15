@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class ProductDTO extends BaseDTO {
+public class ProductDTO extends BaseDto {
 	private String code;
 
 	private String name;
@@ -37,7 +37,7 @@ public class ProductDTO extends BaseDTO {
 
 	private List<TypeDTO> types;
 
-	private CollectionDTO collection;
+	private CollectionDto collection;
 
 	private Set<ImageDTO> images;
 

@@ -1,6 +1,6 @@
 package com.nlu.dto;
 
-public class StatusDTO extends BaseDTO{
+public class StatusDTO extends BaseDto{
 	private String code;
 
 	private String name;

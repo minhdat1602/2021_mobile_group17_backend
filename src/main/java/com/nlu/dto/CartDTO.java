@@ -2,7 +2,7 @@ package com.nlu.dto;
 
 import java.util.List;
 
-public class CartDTO  extends BaseDTO{
+public class CartDTO  extends BaseDto{
 	private UserDTO user;
 	private List<CartItemDTO> cartItems;
 

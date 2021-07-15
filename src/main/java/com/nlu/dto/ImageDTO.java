@@ -1,6 +1,6 @@
 package com.nlu.dto;
 
-public class ImageDTO extends BaseDTO {
+public class ImageDTO extends BaseDto {
 //	private ProductDTO product;
 
 	private String url;

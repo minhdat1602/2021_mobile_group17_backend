@@ -1,6 +1,6 @@
 package com.nlu.dto;
 
-public class CategoryDTO  extends BaseDTO{
+public class CategoryDTO  extends BaseDto{
 
 	
 

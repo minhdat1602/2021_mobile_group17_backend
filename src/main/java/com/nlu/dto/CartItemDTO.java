@@ -1,6 +1,6 @@
 package com.nlu.dto;
 
-public class CartItemDTO  extends BaseDTO{
+public class CartItemDTO  extends BaseDto{
 	private int quantity;
 	private InventoryDTO inventory;
 //	private CartDTO cart;

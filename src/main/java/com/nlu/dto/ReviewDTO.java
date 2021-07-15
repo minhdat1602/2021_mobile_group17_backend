@@ -3,7 +3,7 @@ package com.nlu.dto;
 import java.util.Date;
 import java.util.List;
 
-public class ReviewDTO extends BaseDTO {
+public class ReviewDTO extends BaseDto {
 
 	private ProductDTO product;
 

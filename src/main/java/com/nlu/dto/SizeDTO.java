@@ -1,6 +1,6 @@
 package com.nlu.dto;
 
-public class SizeDTO extends BaseDTO{
+public class SizeDTO extends BaseDto{
 	private String size;
 
 	private Integer active;

@@ -3,7 +3,7 @@ package com.nlu.dto;
 import java.util.Date;
 import java.util.List;
 
-public class OrderDTO extends BaseDTO{
+public class OrderDTO extends BaseDto{
 	private String code;
 
 	private double totalSellPrice;

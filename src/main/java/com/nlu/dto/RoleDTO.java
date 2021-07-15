@@ -5,7 +5,7 @@ import java.util.Set;
 
 import com.nlu.common.ERole;
 
-public class RoleDTO extends BaseDTO{
+public class RoleDTO extends BaseDto{
 	private ERole code;
 
 	private String name;
