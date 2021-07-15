@@ -8,19 +8,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nlu.entity.CategoryEntity;
+import com.nlu.dto.CategoryDto;
 import com.nlu.service.Impl.CategoryService;
 
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
-	
+
+	private final CategoryService categoryService;
+
 	@Autowired
-	private CategoryService categoryService;
-	
+	public CategoryController(CategoryService categoryService) {
+		this.categoryService = categoryService;
+	}
+
 	@GetMapping("/all")
-	public ResponseEntity<?> getAll(){
-		List<CategoryEntity> categories = categoryService.getAll();
+	public ResponseEntity<?> getAll() {
+		List<CategoryDto> categories = this.categoryService.getAll();
 		return ResponseEntity.ok(categories);
 	}
 }

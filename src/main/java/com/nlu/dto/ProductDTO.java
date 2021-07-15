@@ -33,7 +33,7 @@ public class ProductDTO extends BaseDto {
 
 	private int active;
 
-	private CategoryDTO category;
+	private CategoryDto category;
 
 	private List<TypeDTO> types;
 
