@@ -1,6 +1,7 @@
 package com.nlu.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -9,13 +10,14 @@ import com.nlu.entity.ProductEntity;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
+
+	Optional<ProductEntity> findById(Long id);
+
 	List<ProductEntity> findAll();
 
 	List<ProductEntity> findByIsNew(int isNew);
 
 	List<ProductEntity> findByDiscountGreaterThan(double amount);
-
-	ProductEntity findById(long id);
 
 	List<ProductEntity> findByCategoryId(long categoryId);
 

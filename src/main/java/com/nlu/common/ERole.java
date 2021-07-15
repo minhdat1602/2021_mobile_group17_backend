@@ -1,10 +1,10 @@
 package com.nlu.common;
 
 public enum ERole {
-	USER,
-	ADMIN,
-	ORDER,
-	PRODUCT,
-	CONFIG,
-	DASHBOARD,
+	ROLE_USER,
+	ROLE_ADMIN,
+	ROLE_ORDER,
+	ROLE_PRODUCT,
+	ROLE_CONFIG,
+	ROLE_DASHBOARD,
 }

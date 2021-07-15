@@ -1,10 +1,15 @@
 package com.nlu.payload.response;
 
 public class MessageResponse {
-	private String message;
+	public String status;
+	public String message;
 
-	public MessageResponse(String message) {
-		this.message = message;
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getMessage() {

@@ -15,24 +15,29 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "product")
+@Setter
+@Getter
 public class ProductEntity extends BaseEntity {
 
-	@Column(name = "code")
+	@Column(name = "code", unique = true)
 	private String code;
 
 	@Column(name = "name")
 	private String name;
 
 	@Column(name = "origin_price")
-	private double originPrice;
+	private Double originPrice;
 
 	@Column(name = "price")
-	private double price;
+	private Double price;
 
 	@Column(name = "discount")
-	private double discount;
+	private Double discount;
 
 	@Column(name = "hot")
 	private Integer isHot;
@@ -46,14 +51,23 @@ public class ProductEntity extends BaseEntity {
 	@Column(name = "material")
 	private String material;
 
+	@Column(name = "height")
+	private Double height;
+
+	@Column(name = "width")
+	private Double width;
+
+	@Column(name = "weight")
+	private Double weight;
+
 	@Column(name = "colour")
 	private String colour;
 
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "avtive")
-	private int active;
+	@Column(name = "active")
+	private Integer active;
 
 	@JsonManagedReference
 	@ManyToOne
@@ -89,165 +103,5 @@ public class ProductEntity extends BaseEntity {
 	@JsonBackReference
 	@OneToMany(mappedBy = "product", targetEntity = OrderDetailEntity.class)
 	private List<OrderDetailEntity> orderDetails;
-
-	public String getCode() {
-		return code;
-	}
-
-	public double getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(double discount) {
-		this.discount = discount;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public double getOriginPrice() {
-		return originPrice;
-	}
-
-	public void setOriginPrice(double originPrice) {
-		this.originPrice = originPrice;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public Integer getIsHot() {
-		return isHot;
-	}
-
-	public void setIsHot(Integer isHot) {
-		this.isHot = isHot;
-	}
-
-	public Integer getIsNew() {
-		return isNew;
-	}
-
-	public void setIsNew(Integer isNew) {
-		this.isNew = isNew;
-	}
-
-	public Integer getIsHighLigh() {
-		return isHighLigh;
-	}
-
-	public void setIsHighLigh(Integer isHighLigh) {
-		this.isHighLigh = isHighLigh;
-	}
-
-	public String getMaterial() {
-		return material;
-	}
-
-	public void setMaterial(String material) {
-		this.material = material;
-	}
-
-	public String getColour() {
-		return colour;
-	}
-
-	public void setColour(String colour) {
-		this.colour = colour;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getActive() {
-		return active;
-	}
-
-	public void setActive(int active) {
-		this.active = active;
-	}
-
-	public CategoryEntity getCategory() {
-		return category;
-	}
-
-	public void setCategory(CategoryEntity category) {
-		this.category = category;
-	}
-
-	public List<TypeEntity> getTypes() {
-		return types;
-	}
-
-	public void setTypes(List<TypeEntity> types) {
-		this.types = types;
-	}
-
-	public CollectionEntity getCollection() {
-		return collection;
-	}
-
-	public void setCollection(CollectionEntity collection) {
-		this.collection = collection;
-	}
-
-	public Set<ImageEntity> getImages() {
-		return images;
-	}
-
-	public void setImages(Set<ImageEntity> images) {
-		this.images = images;
-	}
-
-	public Set<InventoryEntity> getInventories() {
-		return inventories;
-	}
-
-	public void setInventories(Set<InventoryEntity> inventories) {
-		this.inventories = inventories;
-	}
-
-	public Set<InputDetailEntity> getInputDetails() {
-		return inputDetails;
-	}
-
-	public void setInputDetails(Set<InputDetailEntity> inputDetails) {
-		this.inputDetails = inputDetails;
-	}
-
-	public List<ReviewEntity> getReviews() {
-		return reviews;
-	}
-
-	public void setReviews(List<ReviewEntity> reviews) {
-		this.reviews = reviews;
-	}
-
-	public List<OrderDetailEntity> getOrderDetails() {
-		return orderDetails;
-	}
-
-	public void setOrderDetails(List<OrderDetailEntity> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
 
 }

@@ -29,7 +29,7 @@ import com.nlu.entity.UserInfoEntity;
 import com.nlu.payload.request.LoginRequest;
 import com.nlu.payload.request.SignupRequest;
 import com.nlu.payload.response.JwtResponse;
-import com.nlu.payload.response.Message;
+import com.nlu.payload.response.MessageResponse;
 import com.nlu.repository.RoleRepository;
 import com.nlu.repository.UserInfoRepository;
 import com.nlu.repository.UserRepository;
@@ -94,7 +94,7 @@ public class AuthController {
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-			Message message = new Message();
+			MessageResponse message = new MessageResponse();
 			message.setStatus("fail");
 			message.setMessage("Email is already in use!");
 			return ResponseEntity.ok(message);
@@ -107,39 +107,39 @@ public class AuthController {
 		Set<RoleEntity> roles = new HashSet<>();
 
 		if (strRoles == null) {
-			RoleEntity userRole = roleRepository.findByCode(ERole.USER)
+			RoleEntity userRole = roleRepository.findByCode(ERole.ROLE_USER)
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 			roles.add(userRole);
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
 				case "admin":
-					RoleEntity adminRole = roleRepository.findByCode(ERole.ADMIN)
+					RoleEntity adminRole = roleRepository.findByCode(ERole.ROLE_ADMIN)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(adminRole);
 					break;
 				case "order":
-					RoleEntity orderRole = roleRepository.findByCode(ERole.ORDER)
+					RoleEntity orderRole = roleRepository.findByCode(ERole.ROLE_ORDER)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(orderRole);
 					break;
 				case "product":
-					RoleEntity productRole = roleRepository.findByCode(ERole.ORDER)
+					RoleEntity productRole = roleRepository.findByCode(ERole.ROLE_PRODUCT)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(productRole);
 					break;
 				case "config":
-					RoleEntity configRole = roleRepository.findByCode(ERole.ORDER)
+					RoleEntity configRole = roleRepository.findByCode(ERole.ROLE_CONFIG)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(configRole);
 					break;
 				case "dashboard":
-					RoleEntity dashboard = roleRepository.findByCode(ERole.ORDER)
+					RoleEntity dashboard = roleRepository.findByCode(ERole.ROLE_DASHBOARD)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(dashboard);
 					break;
 				default:
-					RoleEntity userRole = roleRepository.findByCode(ERole.USER)
+					RoleEntity userRole = roleRepository.findByCode(ERole.ROLE_USER)
 							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 					roles.add(userRole);
 				}
@@ -158,7 +158,7 @@ public class AuthController {
 			userInfoRepository.save(userInfoEntity);
 		}
 
-		Message response = new Message();
+		MessageResponse response = new MessageResponse();
 		response.setStatus("success");
 		response.setMessage("User registered successfully!");
 

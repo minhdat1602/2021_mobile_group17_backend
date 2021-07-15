@@ -5,33 +5,39 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nlu.dto.ProductDTO;
-import com.nlu.payload.response.Data;
-import com.nlu.payload.response.Message;
+import com.nlu.payload.response.DataResponse;
+import com.nlu.payload.response.MessageResponse;
 import com.nlu.service.ProductService;
 
-@RestController("/admin/product")
+@RestController()
+@RequestMapping("/admin/product")
 public class AdminProductController {
 
+	private final ProductService productService;
+
 	@Autowired
-	private ProductService productService;
+	public AdminProductController(ProductService productService) {
+		this.productService = productService;
+	}
 
 	@GetMapping
 	private ResponseEntity<?> fetchAll() {
-		List<ProductDTO> products;
+		List<ProductDTO> products = productService.adminGetAll();
 		try {
-			products = productService.getAlll();
-			Data response = new Data();
+			products = productService.adminGetAll();
+			DataResponse response = new DataResponse();
 			response.setStatus("success");
 			response.setData(products);
 			return ResponseEntity.ok(response);
 		} catch (Exception e) {
-			Message response = new Message();
+			MessageResponse response = new MessageResponse();
 			response.setStatus("fail");
 			response.setMessage(e.getMessage());
-			return ResponseEntity.ok(response);
+			return ResponseEntity.badRequest().body(response);
 		}
 	}
 }
