@@ -46,7 +46,9 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.21</version>
+			<!-- <version>8.0.21</version> -->
+			<scope>provided</scope>
+			
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
 		<dependency>
@@ -93,13 +95,13 @@
 				</plugin>
 
 				<!-- Test Meta Model -->
-				<plugin>
+			<!-- 	<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
 						<compilerArgument>-proc:none</compilerArgument>
 					</configuration>
-				</plugin>
-				<plugin>
+				</plugin> -->
+				<!-- <plugin>
 					<groupId>org.bsc.maven</groupId>
 					<artifactId>maven-processor-plugin</artifactId>
 					<executions>
@@ -110,7 +112,7 @@
 							</goals>
 							<phase>generate-sources</phase>
 							<configuration>
-								<!-- source output directory -->
+								source output directory
 								<outputDirectory>target/metamodel</outputDirectory>
 							</configuration>
 						</execution>
@@ -134,7 +136,7 @@
 							</configuration>
 						</execution>
 					</executions>
-				</plugin>
+				</plugin> -->
 			</plugins>
 		</pluginManagement>
 	</build>
