@@ -69,6 +69,10 @@ public class ProductEntity extends BaseEntity {
 	@Column(name = "active")
 	private Integer active;
 
+	@ManyToOne
+	@JoinColumn(name = "brand_id", referencedColumnName = "id")
+	private BrandEntity brand;
+
 	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "id")

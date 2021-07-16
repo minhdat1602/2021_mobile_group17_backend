@@ -23,8 +23,8 @@ public class CollectionEntity extends BaseEntity {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "active")
-	private String active;
+	@Column(name = "active",length = 1)
+	private int active;
 
 	@JsonBackReference
 	@ManyToOne
@@ -34,5 +34,4 @@ public class CollectionEntity extends BaseEntity {
 	@JsonBackReference
 	@OneToMany(mappedBy = "collection", targetEntity = ProductEntity.class)
 	private Set<ProductEntity> products;
-
 }
