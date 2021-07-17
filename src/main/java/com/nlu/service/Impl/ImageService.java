@@ -6,9 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nlu.dto.ImageDTO;
 import com.nlu.entity.ImageEntity;
-import com.nlu.entity.ReviewEntity;
 import com.nlu.repository.ImageRepository;
 
 @Service

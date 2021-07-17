@@ -18,5 +18,6 @@ public class pickfile {
 		
 		String result = first + url.substring(begin, end);
 		System.out.println(result);
+		sc.close();
 	}
 }

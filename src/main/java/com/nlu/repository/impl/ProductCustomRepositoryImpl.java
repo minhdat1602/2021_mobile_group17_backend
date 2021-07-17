@@ -13,9 +13,11 @@ import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 
 import com.nlu.entity.ProductEntity;
+import com.nlu.entity.ProductEntity_;
 
 @Repository
 public class ProductCustomRepositoryImpl {
+
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -29,7 +31,8 @@ public class ProductCustomRepositoryImpl {
 		// FROM: we declare the starting point of the query (Book entity)
 		Root<ProductEntity> product = cq.from(ProductEntity.class);
 		// Điều kiện: we create predicates against our Product Entity
-		Predicate hasName = cb.equal(product.get("name"), name);
+		// ProductEntity_ là metamodel jpa 2.0 trong criteria api
+		Predicate hasName = cb.equal(product.get(ProductEntity_.NAME), name);
 
 		// WHERE: We apply predicates to our CriteriaQuery.
 		cq.where(hasName);
