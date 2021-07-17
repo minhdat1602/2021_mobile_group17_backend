@@ -30,7 +30,7 @@ public class BrandController {
 		this.brandService = brandService;
 	}
 
-	@GetMapping("/all")
+	@GetMapping("all")
 	public List<BrandDto> getAll() {
 		return brandService.getAll();
 	}
