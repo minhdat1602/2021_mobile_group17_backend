@@ -27,17 +27,18 @@ public class AdminProductController {
 	@GetMapping
 	private ResponseEntity<?> fetchAll() {
 		List<ProductDTO> products = productService.adminGetAll();
-		try {
-			products = productService.adminGetAll();
-			DataResponse response = new DataResponse();
-			response.setStatus("success");
-			response.setData(products);
-			return ResponseEntity.ok(response);
-		} catch (Exception e) {
-			MessageResponse response = new MessageResponse();
-			response.setStatus("fail");
-			response.setMessage(e.getMessage());
-			return ResponseEntity.badRequest().body(response);
-		}
+		return ResponseEntity.ok(products);
+//		try {
+//			products = productService.adminGetAll();
+//			DataResponse response = new DataResponse();
+//			response.setStatus("success");
+//			response.setData(products);
+//			return ResponseEntity.ok(response);
+//		} catch (Exception e) {
+//			MessageResponse response = new MessageResponse();
+//			response.setStatus("fail");
+//			response.setMessage(e.getMessage());
+//			return ResponseEntity.badRequest().body(response);
+//		}
 	}
 }
