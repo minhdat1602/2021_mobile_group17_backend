@@ -44,6 +44,10 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductEntity> getHot() {
 		return productRepository.findByIsHot(1);
 	}
+	
+	public List<ProductEntity> getHighligh() {
+		return productRepository.findByIsHighligh(1);
+	}
 
 	public ProductDTO findById(Long id) {
 		ProductEntity entity = this.productRepository
