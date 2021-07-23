@@ -35,6 +35,14 @@ public class ProductController {
 
 		return ResponseEntity.ok(products);
 	}
+	
+	@GetMapping("/hot")
+	public ResponseEntity<List<ProductEntity>> getHot() {
+		List<ProductEntity> products = productService.getHot();
+		System.out.print("gethot: " + products.size());
+
+		return ResponseEntity.ok(products);
+	}
 
 	@GetMapping("/discount")
 	public ResponseEntity<List<ProductEntity>> getDiscount() {

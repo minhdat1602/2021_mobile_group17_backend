@@ -16,6 +16,8 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 	List<ProductEntity> findAll();
 
 	List<ProductEntity> findByIsNew(int isNew);
+	
+	List<ProductEntity> findByIsHot(int isHot);
 
 	List<ProductEntity> findByDiscountGreaterThan(double amount);
 
