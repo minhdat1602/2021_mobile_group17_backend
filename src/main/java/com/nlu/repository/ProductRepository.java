@@ -19,7 +19,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 	
 	List<ProductEntity> findByIsHot(int isHot);
 	
-	List<ProductEntity> findByIsHighligh(int isHighligh);
+	List<ProductEntity> findByIsHighLigh(int isHighLigh);
 
 	List<ProductEntity> findByDiscountGreaterThan(double amount);
 

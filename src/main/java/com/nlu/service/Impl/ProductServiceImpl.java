@@ -46,7 +46,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	public List<ProductEntity> getHighligh() {
-		return productRepository.findByIsHighligh(1);
+		return productRepository.findByIsHighLigh(1);
 	}
 
 	public ProductDTO findById(Long id) {
