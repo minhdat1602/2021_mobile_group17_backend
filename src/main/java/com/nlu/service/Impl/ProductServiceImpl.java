@@ -11,25 +11,35 @@ import com.nlu.dto.ProductDTO;
 import com.nlu.entity.ProductEntity;
 import com.nlu.exceptions.ResoureNotFoundException;
 import com.nlu.repository.ProductRepository;
+import com.nlu.repository.impl.ProductCustomRepositoryImpl;
 import com.nlu.service.ProductService;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
-	 private ProductRepository productRepository;
-	
+	private ProductRepository productRepository;
+	private ProductCustomRepositoryImpl productCustomRepository;
+
 	@Autowired
-	public ProductServiceImpl(ProductRepository productRepository) {
+	public ProductServiceImpl(ProductRepository productRepository,
+			ProductCustomRepositoryImpl productCustomRepository) {
 		this.productRepository = productRepository;
+		this.productCustomRepository = productCustomRepository;
 	}
 
-	@Autowired private ModelMapper mapper;
+	@Autowired
+	private ModelMapper mapper;
 	
-	public List<ProductDTO> adminGetAll() {
-		return productRepository
-				.findAll()
+	public List<ProductDTO> findByKeyword(String keyword){
+		return productCustomRepository.findByKeyword(keyword)
 				.stream()
 				.map((product) -> mapper.map(product, ProductDTO.class))
+				.collect(Collectors.toList());
+		
+	}
+
+	public List<ProductDTO> adminGetAll() {
+		return productRepository.findAll().stream().map((product) -> mapper.map(product, ProductDTO.class))
 				.collect(Collectors.toList());
 	}
 
@@ -40,19 +50,17 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductEntity> getDiscount() {
 		return productRepository.findByDiscountGreaterThan(0.0);
 	}
-	
+
 	public List<ProductEntity> getHot() {
 		return productRepository.findByIsHot(1);
 	}
-	
+
 	public List<ProductEntity> getHighligh() {
 		return productRepository.findByIsHighLigh(1);
 	}
 
 	public ProductDTO findById(Long id) {
-		ProductEntity entity = this.productRepository
-				.findById(id)
-				.orElseThrow(() -> new ResoureNotFoundException(id));
+		ProductEntity entity = this.productRepository.findById(id).orElseThrow(() -> new ResoureNotFoundException(id));
 		return mapper.map(entity, ProductDTO.class);
 	}
 

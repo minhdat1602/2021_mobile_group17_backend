@@ -17,9 +17,9 @@ public class TestCriteriaController {
 	@Autowired
 	private ProductCustomRepositoryImpl testRepo;
 	
-	@GetMapping("product")
-	public List<ProductEntity> test(){
-		List<ProductEntity> result = testRepo.findByName("AAA");
-		return result;
-	}
+//	@GetMapping("product")
+//	public List<ProductEntity> test(){
+////		List<ProductEntity> result = testRepo.findByName("AAA");
+//		return result;
+//	}
 }
