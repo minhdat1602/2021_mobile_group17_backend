@@ -36,7 +36,7 @@ public class ProductCustomRepositoryImpl {
 		Join<ProductEntity, BrandEntity> brand = product.join(ProductEntity_.BRAND);
 		// Điều kiện: we create predicates against our Product Entity
 		// ProductEntity_ là metamodel jpa 2.0 trong criteria api
-		Predicate hasName = cb.like(brand.get(ProductEntity_.NAME), "%"+keyword+"%");
+		Predicate hasName = cb.like(product.get(ProductEntity_.NAME), "%"+keyword+"%");
 		Predicate hasBrand = cb.like(brand.get(BrandEntity_.NAME), "%"+keyword+"%");
 		Predicate finalPredicate = cb.or(hasName, hasBrand);
 
