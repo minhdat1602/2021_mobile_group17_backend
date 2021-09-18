@@ -72,7 +72,7 @@ public class WebSucurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
-		http
+		http.cors().and().csrf().disable()
 		.exceptionHandling().authenticationEntryPoint(unAuthorizedHandler).and()
 	     .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler()).and()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
