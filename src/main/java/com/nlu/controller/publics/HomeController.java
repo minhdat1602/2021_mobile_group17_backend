@@ -12,6 +12,7 @@ import com.nlu.service.Impl.HomeService;
 
 @RestController
 @RequestMapping("/home")
+@CrossOrigin(origins = "http://localhost:4200")
 public class HomeController {
 	
 	@Autowired
