@@ -11,6 +11,6 @@ import com.nlu.entity.HomeEntity;
 public interface HomeRepository extends JpaRepository<HomeEntity, Long> {
 	
 	public List<HomeEntity> findByIsHot(Integer isHot);
-	public List<HomeEntity> findByIsHighLight(Integer isHighLight);
+	public List<HomeEntity> findByIsHighlight(Integer isHighLight);
 
 }
