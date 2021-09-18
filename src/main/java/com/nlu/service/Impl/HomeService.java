@@ -15,10 +15,10 @@ public class HomeService {
 	private HomeRepository homeRepository;
 	
 	public List<HomeEntity> findByIsHot(){
-		return homeRepository.findByIsHot(1, 1);
+		return homeRepository.findByHotAndActive(1, 1);
 	}
 	
 	public List<HomeEntity> findByIsHighLight(){
-		return homeRepository.findByIsHighlight(1, 1);
+		return homeRepository.findByHighlightAndActive(1, 1);
 	}
 }
