@@ -20,7 +20,7 @@ public class HomeEntity extends BaseEntity{
 	private String direct;
 	private Integer price;
 	private String image;
-	private Integer isHot;
-	private Integer isHighlight;
+	private Integer hot;
+	private Integer highlight;
 	private Integer active;
 }
